@@ -6,7 +6,7 @@ public class CaveSquare extends Square{
 	private String description;
 	
 	public CaveSquare() {
-		this.description=DEFAULT_DESCRIPTION;
+		
 	}
 	
 	public CaveSquare(String description){
@@ -14,8 +14,12 @@ public class CaveSquare extends Square{
 	}
 	
 	public String getDescription(){
+		if(description.equals(null)){
+			return DEFAULT_DESCRIPTION;
+		}else{
+			return this.description;
+		}
 		
-		return this.description;
 	}
 
 

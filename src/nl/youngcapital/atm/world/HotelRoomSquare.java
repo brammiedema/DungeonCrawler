@@ -14,7 +14,11 @@ public class HotelRoomSquare extends Square{
 	}
 	
 	public String getDescription(){
-		return this.description;
+		if(description.equals(null)){
+			return DEFAULT_DESCRIPTION;
+		}else{
+			return this.description;
+		}
 		
 	}
 }

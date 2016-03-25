@@ -12,8 +12,6 @@ public abstract class Square {
 		this.description = description;
 	}
 	
-	public String getDescription(){
-		return this.description;
-	}
+	abstract String getDescription();
 	
 }

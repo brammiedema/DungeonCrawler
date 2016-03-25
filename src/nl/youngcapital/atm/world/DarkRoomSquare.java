@@ -6,6 +6,7 @@ public class DarkRoomSquare extends Square{
 	private String description;
 	
 	public DarkRoomSquare() {
+	
 		this.description=DEFAULT_DESCRIPTION;
 	}
 	
@@ -14,7 +15,10 @@ public class DarkRoomSquare extends Square{
 	}
 	
 	public String getDescription(){
-		
-		return this.description;
+		if(description.equals(null)){
+			return DEFAULT_DESCRIPTION;
+		}else{
+			return this.description;
+		}
 	}
 }
