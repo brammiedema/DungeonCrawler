@@ -84,7 +84,7 @@ public class World {
 						world[z][y][x] =   new HotelRoomSquare();
 						break;
 					case 3:
-						world[z][y][x] =   new PlainesSquare();
+						world[z][y][x] =   new PlainsSquare();
 						break;
 					default:
 						world[z][y][x] =  new RoadSquare();
@@ -109,7 +109,7 @@ public class World {
 					} else if(square instanceof LemonSquare){
 						sb.append("0");
 						
-					} else if(square instanceof PlainesSquare){
+					} else if(square instanceof PlainsSquare){
 						sb.append("P");
 						
 					} else if(square instanceof HotelRoomSquare){

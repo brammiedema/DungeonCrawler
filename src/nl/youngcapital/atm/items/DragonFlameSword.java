@@ -6,13 +6,16 @@ import nl.youngcaptital.atm.effects.Bleed;
 import nl.youngcaptital.atm.effects.Effect;
 import nl.youngcapital.atm.magiceffects.MagicEffect;
 
-public class DragonFlameSword extends Item implements MagicItem, Weapon {
+public class DragonFlameSword extends Item implements MagicItem, Weapon, Equipable {
+	
+	private static final String NAME = "Dragon flame sword";
+	private static final String DEFAULT_DESCRIPTION = "This sword is stolen from a dragon, let's hope it doesn't catch up.";
+	
 	private int minDmg;
 	private int maxDmg;
 	private Effect effect;
 	private MagicEffect magicEffect;
-	private static final String NAME = "Dragon flame sword";
-	private static final String DEFAULT_DESCRIPTION = "This sword is stolen from a dragon, let's hope it doesn't catch up.";
+	private boolean equiped = false;
 	
 	public DragonFlameSword(){
 		Random ran = new Random();
@@ -37,22 +40,34 @@ public class DragonFlameSword extends Item implements MagicItem, Weapon {
 
 	@Override
 	public String getDescription() {
-		// TODO Auto-generated method stub
 		return DEFAULT_DESCRIPTION;
 	}
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return NAME;
 	}
 
 	@Override
 	public MagicEffect getMagicEffect() {
-		// TODO Auto-generated method stub
 		return magicEffect;
 	}
+	
+	@Override
+	public boolean isEquipped() {
+		return equiped;
+	}
 
+	@Override
+	public void equip() {
+		equiped =  true;
+		
+	}
+
+	@Override
+	public void unEquip() {
+		equiped = false;
+	}
 
 
 

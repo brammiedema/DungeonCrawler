@@ -1,14 +1,14 @@
 package nl.youngcapital.atm.world;
 
-public class PlainesSquare extends Square{
+public class PlainsSquare extends Square{
 	final private static String DEFAULT_DESCRIPTION = "You find yourself in the middle of a stretch of plaines.";
 	private String description;
 	
-	public PlainesSquare() {
+	public PlainsSquare() {
 		this.description=DEFAULT_DESCRIPTION;
 	}
 	
-	public PlainesSquare(String description){
+	public PlainsSquare(String description){
 		this.description = description;
 	}
 	

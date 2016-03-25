@@ -5,12 +5,13 @@ import java.util.Random;
 import nl.youngcaptital.atm.effects.Bleed;
 import nl.youngcaptital.atm.effects.Effect;
 
-public class BroadSword extends Item implements Weapon {
+public class BroadSword extends Item implements Weapon, Equipable {
 	static final public String DESCRIPTION = "This sword complains!";
 	static final public String NAME = "Broadsword";
 	private int minDmg;
 	private int maxDmg;
 	private Effect effect;
+	private Boolean equiped = false;
 	
 	public BroadSword() {
 		Random ran = new Random();
@@ -43,6 +44,22 @@ public class BroadSword extends Item implements Weapon {
 	@Override
 	public String getName() {
 		return NAME;
+	}
+
+	@Override
+	public boolean isEquipped() {
+		return equiped;
+	}
+
+	@Override
+	public void equip() {
+		equiped =  true;
+		
+	}
+
+	@Override
+	public void unEquip() {
+		equiped = false;
 	}
 
 }

@@ -1,13 +1,13 @@
 package nl.youngcapital.atm.items;
 
-public class Hamburger extends Item implements Eatable{
+public class Hamburger extends Item implements Consumable{
 	private static final String DEFAULT_DESCRIPTION = "It looks kind of good I supose.";
 	private static final String DEFAULT_NAME = "Hamburger";
 	private String description;
 	private String name;
 	
 	@Override
-	public void eat() {
+	public void consume() {
 		System.out.println("nom nom good food");
 		
 	}

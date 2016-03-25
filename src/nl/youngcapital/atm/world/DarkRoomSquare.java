@@ -2,7 +2,7 @@ package nl.youngcapital.atm.world;
 
 public class DarkRoomSquare extends Square{
 	
-	final private static String DEFAULT_DESCRIPTION = "You are in a darkroom, yeah hear heavy breathing.";
+	final private static String DEFAULT_DESCRIPTION = "You are in a darkroom, you hear heavy breathing.";
 	private String description;
 	
 	public DarkRoomSquare() {

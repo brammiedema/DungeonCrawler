@@ -18,7 +18,7 @@ public class Main implements Runnable{
 		System.out.println("got a world");
 		Player p = new Player();
 		System.out.println(gw.getPossibleDirections(p.getX(), p.getY(), p.getZ()));
-		
+		System.out.println(gw);
 	}
 	
 }
