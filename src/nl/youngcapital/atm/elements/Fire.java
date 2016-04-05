@@ -1,4 +1,4 @@
-package elements;
+package nl.youngcapital.atm.elements;
 
 public class Fire extends Element{
 	private Element strengthElement;

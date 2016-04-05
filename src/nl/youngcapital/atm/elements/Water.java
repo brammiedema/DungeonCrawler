@@ -1,4 +1,4 @@
-package elements;
+package nl.youngcapital.atm.elements;
 
 public class Water extends Element {
 	private Element strengthElement;

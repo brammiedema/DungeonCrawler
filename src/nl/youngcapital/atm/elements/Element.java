@@ -1,4 +1,4 @@
-package elements;
+package nl.youngcapital.atm.elements;
 
 
 public abstract class Element {

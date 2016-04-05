@@ -1,4 +1,4 @@
-package elements;
+package nl.youngcapital.atm.elements;
 
 public class Earth extends Element {
 	private Element strengthElement;
