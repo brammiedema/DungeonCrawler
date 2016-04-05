@@ -20,7 +20,6 @@ public class BroadSword extends Item implements Weapon {
 		this.minDmg = ran.nextInt(4) + 1;
 		this.maxDmg = ran.nextInt(3) + this.minDmg;
 		this.effect = new Bleed();
-		
 	}
 	
 	@Override
