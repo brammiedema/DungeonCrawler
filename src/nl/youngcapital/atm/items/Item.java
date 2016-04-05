@@ -15,6 +15,7 @@ Items hebben een description
  */
 public abstract class Item {
 	private String description;
+	private String name;
 	
 	public Item(){		
 		

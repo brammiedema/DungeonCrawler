@@ -5,8 +5,8 @@ import java.util.Random;
 import nl.youngcaptital.atm.effects.Bleed;
 import nl.youngcaptital.atm.effects.Effect;
 
-public class BroadSword extends Item implements Weapon, Equipable {
-	static final public String DESCRIPTION = "This sword complains!";
+public class BroadSword extends Item implements Weapon {
+	static final public String DESCRIPTION = "This sword comaplains!";
 	static final public String NAME = "Broadsword";
 	private int minDmg;
 	private int maxDmg;

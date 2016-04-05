@@ -6,7 +6,7 @@ import nl.youngcaptital.atm.effects.Bleed;
 import nl.youngcaptital.atm.effects.Effect;
 import nl.youngcapital.atm.magiceffects.MagicEffect;
 
-public class DragonFlameSword extends Item implements MagicItem, Weapon, Equipable {
+public class DragonFlameSword extends Item implements MagicItem, Weapon {
 	
 	private static final String NAME = "Dragon flame sword";
 	private static final String DEFAULT_DESCRIPTION = "This sword is stolen from a dragon, let's hope it doesn't catch up.";
