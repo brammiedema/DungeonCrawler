@@ -13,46 +13,54 @@ public class World {
 	public String getPossibleDirections(int x, int y, int z){
 		
 		StringBuilder sb = new StringBuilder();
-		sb.append("The way");
+		sb.append("The direction(s) ");
 		
-		List<String> directions = new ArrayList<String>();
+		List<String> directions = new ArrayList<String>(4);
 		
 		
-		int southOffset = (y-1 < 0 )? 0 : 1;
-		int northOffset = (y+1 > MAX_Y_SIZE_WORLD )? 0 : 1;
-		int westOffset = (y-1 < 0 )? 0 : 1;
-		int eastOffset = (y+1 > MAX_X_SIZE_WORLD )? 0 : 1;
+		int southOffset = (y - 1 < 0 ) ? 0 : 1;
+		int northOffset = (y + 1 > MAX_Y_SIZE_WORLD ) ? 0 : 1;
+		int westOffset = (x - 1 < 0 ) ? 0 : 1;
+		int eastOffset = (x + 1 > MAX_X_SIZE_WORLD ) ? 0 : 1;
 		
-		if(!(this.world[z][southOffset][z] instanceof LemonSquare) ){
-			directions.add(" south");
+		if((x > 0 && x < MAX_X_SIZE_WORLD) && (y > 0 && y < MAX_Y_SIZE_WORLD )){
 			
-		} 
-		if(!(this.world[z][northOffset][z] instanceof LemonSquare) ){
-			directions.add(" north");
 			
-		} 
-		if(!(this.world[z][y][westOffset] instanceof LemonSquare) ){
-			directions.add(" west");
 			
-		} 
-		if(!(this.world[z][y][eastOffset] instanceof LemonSquare) ){
-			directions.add(" east");
+			if(!(this.world[z][southOffset][x] instanceof LemonSquare) ){
+				directions.add("south");
+				
+			} 
+			if(!(this.world[z][northOffset][x] instanceof LemonSquare) ){
+				directions.add("north");
+				
+			} 
+			if(!(this.world[z][y][westOffset] instanceof LemonSquare) ){
+				directions.add("west");
+				
+			} 
+			if(!(this.world[z][y][eastOffset] instanceof LemonSquare) ){
+				directions.add("east");
+			}
+		}else{
+			//TODO:: add out die bounds handeling raise Z and recalculate y and x
+			System.out.println("out die bounds" );
 		}
-		
 		sb.append(replaceLastComma(directions));
-		sb.append("are possible directions");
+		sb.append("are open to explore");
 		return sb.toString();
 	}
 	
 	private String replaceLastComma(List<String> strings){
 		String s ="";
-
-		for(int i = 0; i <= strings.size()-3 ; i++){
-			s = s + strings.get(i) + ", ";
-			
+		
+		for(String str : strings){
+			s = s + str + ", ";
 		}
 		
-		s = s + strings.get(strings.size()-2) + " and " + strings.get(strings.size()-1) + " ";
+		System.out.println(s.lastIndexOf(","));
+		s = s.substring(0, s.lastIndexOf(",")) + s.substring(s.lastIndexOf(",")+1, s.length());
+		s = s.substring(0, s.lastIndexOf(",")) +" and" +  s.substring(s.lastIndexOf(",")+1, s.length());
 		
 		return s;
 	}

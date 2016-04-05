@@ -9,6 +9,7 @@ import nl.youngcapital.atm.world.World;
 public class Player {
 	
 	private ArrayList<Item> inventory = new ArrayList<>();
+
 	private int x;
 	private int y;
 	private int z;
@@ -24,15 +25,59 @@ public class Player {
 		
 	}
 	
+	
+	public void useItem(){
+		//TODO implement
+	}
+	public String showInventory(){
+		//TODO implement
+		return null;
+	}
+	
+	public void pickUpItem(Item item){
+		inventory.add(item);
+	}
+	
 	public int getX() {
 		return x;
 	}
+	
 	public int getY() {
 		return y;
 	}
+	
 	public int getZ() {
 		return z;
 	}
 	
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
+	public void setZ(int z) {
+		this.z = z;
+	}
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("location (X, Y, Z): ");
+		
+		sb.append(x);
+		sb.append(", ");
+		sb.append(y);
+		sb.append(", ");
+		sb.append(z);
+		
+		for(Item it : inventory){
+			sb.append(it + "\n");
+		}
+		
+		
+		return sb.toString();
+	}
 
 }

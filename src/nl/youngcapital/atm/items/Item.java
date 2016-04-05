@@ -36,5 +36,9 @@ public abstract class Item {
 
 	public abstract String getName();
 	
-
+	@Override
+	public String toString() {
+	
+		return "Item[ name: " + getName() +"\t description: "+ getDescription()+ " \tprice: "+ getPrice() + " ] ";
+	}
 }

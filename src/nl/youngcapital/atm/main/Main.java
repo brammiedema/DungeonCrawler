@@ -11,14 +11,13 @@ public class Main implements Runnable{
 		Main m = new Main();
 		m.run();
 	}
-
+	
 	@Override
 	public void run() {
-		World gw = new World(); 
-		System.out.println("got a world");
-		Player p = new Player();
-		System.out.println(gw.getPossibleDirections(p.getX(), p.getY(), p.getZ()));
-		System.out.println(gw);
+		GameLoop gl = new GameLoop();
+		gl.run();
 	}
+
+	
 	
 }
