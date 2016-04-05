@@ -16,6 +16,7 @@ public class DragonFlameSword extends Item implements MagicItem, Weapon {
 	private Effect effect;
 	private MagicEffect magicEffect;
 	private boolean equiped = false;
+	private final int PRICE = 25;
 	
 	public DragonFlameSword(){
 		Random ran = new Random();
@@ -51,6 +52,12 @@ public class DragonFlameSword extends Item implements MagicItem, Weapon {
 	@Override
 	public MagicEffect getMagicEffect() {
 		return magicEffect;
+	}
+	
+	@Override
+	public int getPrice() {
+
+		return this.PRICE;
 	}
 	
 	@Override

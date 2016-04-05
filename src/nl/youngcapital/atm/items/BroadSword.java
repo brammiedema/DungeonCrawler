@@ -12,6 +12,7 @@ public class BroadSword extends Item implements Weapon {
 	private int maxDmg;
 	private Effect effect;
 	private Boolean equiped = false;
+	private final int PRICE = 15;
 	
 	public BroadSword() {
 		Random ran = new Random();
@@ -60,6 +61,12 @@ public class BroadSword extends Item implements Weapon {
 	@Override
 	public void unEquip() {
 		equiped = false;
+	}
+
+	@Override
+	public int getPrice() {
+
+		return this.PRICE;
 	}
 
 }

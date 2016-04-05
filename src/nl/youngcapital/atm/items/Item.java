@@ -16,6 +16,7 @@ Items hebben een description
 public abstract class Item {
 	private String description;
 	private String name;
+	private int price;
 	
 	public Item(){		
 		
@@ -24,6 +25,9 @@ public abstract class Item {
 	public Item(String description){
 		this.description = description;
 	}
+	
+	public abstract int getPrice();
+		
 	
 	public abstract String getDescription();
 

@@ -5,7 +5,7 @@ public class Hamburger extends Item implements Consumable{
 	private static final String DEFAULT_NAME = "Hamburger";
 	private String description;
 	private String name;
-	
+	private final int PRICE = 3;
 	@Override
 	public void consume() {
 		System.out.println("nom nom good food");
@@ -29,6 +29,11 @@ public class Hamburger extends Item implements Consumable{
 			return name;
 		}
 		
+	}
+	@Override
+	public int getPrice() {
+
+		return this.PRICE;
 	}
 
 }
