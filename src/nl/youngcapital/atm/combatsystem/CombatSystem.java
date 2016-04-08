@@ -7,6 +7,7 @@ public class CombatSystem {
 	
 	public void fight(Player player, NonPlayableCharacter target){
 		
+		// most basic form
 		target.dealDamage(player.getBaseDamage());
 	}
 }
