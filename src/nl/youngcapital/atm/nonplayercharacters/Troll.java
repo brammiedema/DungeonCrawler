@@ -1,9 +1,17 @@
 package nl.youngcapital.atm.nonplayercharacters;
 
+import java.util.ArrayList;
 import java.util.Random;
+
+import nl.youngcapital.atm.effects.Effect;
+import nl.youngcapital.atm.elements.Element;
+import nl.youngcapital.atm.magiceffects.MagicEffect;
 
 public class Troll implements NonPlayableCharacter {
 	private int healthPoints;
+	private ArrayList<Element> elements;
+	private ArrayList<Effect> effects;
+	private ArrayList<MagicEffect> magicEffects;
 	private String description;
 	
 	private final static String DEFAULT_DESCRIPTION="IT IS A CUTE TROLL!"; 
@@ -46,6 +54,24 @@ public class Troll implements NonPlayableCharacter {
 	@Override
 	public String getDescription() {
 		return description;
+	}
+
+	@Override
+	public ArrayList<Element> getElements() {
+		
+		return elements;
+	}
+
+	@Override
+	public ArrayList<MagicEffect> getMagicEffect() {
+		
+		return magicEffects;
+	}
+
+	@Override
+	public ArrayList<Effect> getEffects() {
+		
+		return effects;
 	}
 
 }

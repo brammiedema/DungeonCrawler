@@ -1,6 +1,7 @@
 package nl.youngcapital.atm.items;
 
 public class Hamburger extends Item implements Consumable{
+	
 	private static final String DEFAULT_DESCRIPTION = "It looks kind of good I supose.";
 	private static final String DEFAULT_NAME = "Hamburger";
 	private String description;

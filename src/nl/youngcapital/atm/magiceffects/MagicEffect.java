@@ -4,6 +4,7 @@ public abstract class MagicEffect {
 	private int duration; 
 	private String name;
 	private int effectProcChance;
+	
 	public MagicEffect(){
 		
 	}
