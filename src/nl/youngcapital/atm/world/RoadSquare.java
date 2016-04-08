@@ -1,23 +1,66 @@
 package nl.youngcapital.atm.world;
 
-public class RoadSquare extends Square{
+import java.util.Random;
+
+import nl.youngcapital.atm.events.Event;
+import nl.youngcapital.atm.events.MerchantEncounter;
+
+public class RoadSquare extends Square {
+
 	final private static String DEFAULT_DESCRIPTION = "You are on a road.";
 	private String description;
-	
+	private Event event;
+
 	public RoadSquare() {
-		this.description=DEFAULT_DESCRIPTION;
+		this.description = DEFAULT_DESCRIPTION;
+
+		Random ran = new Random();
+
+		if ((ran.nextInt() % 3) == 1) {
+			switch (ran.nextInt(2)) {
+			case 0:
+				event = new MerchantEncounter();
+				break;
+			case 1:
+				event = new MerchantEncounter();
+				break;
+			case 2:
+				event = new MerchantEncounter();
+				break;
+			default:
+				break;
+			}
+		} else {
+			event = null;
+		}
 	}
-	
-	public RoadSquare(String description){
+
+	public RoadSquare(String description) {
+		this();
 		this.description = description;
+
 	}
-	
-	public String getDescription(){
-		
-		if(description.equals(null)){
+
+	public String getDescription() {
+
+		if (description.equals(null)) {
 			return DEFAULT_DESCRIPTION;
-		}else{
+		} else {
 			return this.description;
 		}
+	}
+
+	@Override
+	Event getEvent() {
+
+		return event;
+	}
+
+	@Override
+	boolean hasEvent() {
+		if (event == null) {
+			return false;
+		}
+		return true;
 	}
 }

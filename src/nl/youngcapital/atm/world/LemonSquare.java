@@ -1,24 +1,42 @@
 package nl.youngcapital.atm.world;
 
-public class LemonSquare extends Square{
+import nl.youngcapital.atm.events.Event;
+
+public class LemonSquare extends Square {
 	final private static String DEFAULT_DESCRIPTION = "You see a giant lemon blocking your way, the way is blocked return to where you came from.";
 	private String description;
-	
+	private Event event;
+
 	public LemonSquare() {
-		this.description=DEFAULT_DESCRIPTION;
+		this.description = DEFAULT_DESCRIPTION;
 	}
-	
-	public LemonSquare(String description){
+
+	public LemonSquare(String description) {
+		this();
 		this.description = description;
 	}
-	
-	public String getDescription(){
-		
-		if(description.equals(null)){
+
+	public String getDescription() {
+
+		if (description.equals(null)) {
 			return DEFAULT_DESCRIPTION;
-		}else{
+		} else {
 			return this.description;
 		}
+	}
+
+	@Override
+	Event getEvent() {
+
+		return event;
+	}
+
+	@Override
+	boolean hasEvent() {
+		if (event == null) {
+			return false;
+		}
+		return true;
 	}
 
 }

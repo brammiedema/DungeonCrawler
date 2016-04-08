@@ -1,9 +1,11 @@
 package nl.youngcapital.atm.world;
 
+import nl.youngcapital.atm.events.Event;
+
 public abstract class Square {
 	
 	private String description;
-	
+	private Event event;
 	public Square(){
 		super();
 	}
@@ -14,4 +16,7 @@ public abstract class Square {
 	
 	abstract String getDescription();
 	
+	abstract boolean hasEvent();
+	
+	abstract Event getEvent();
 }
