@@ -2,8 +2,8 @@ package nl.youngcapital.atm.items;
 
 import java.util.Random;
 
-import nl.youngcaptital.atm.effects.Bleed;
-import nl.youngcaptital.atm.effects.Effect;
+import nl.youngcapital.atm.effects.Bleed;
+import nl.youngcapital.atm.effects.Effect;
 import nl.youngcapital.atm.magiceffects.MagicEffect;
 
 public class DragonFlameSword extends Item implements MagicItem, Weapon {

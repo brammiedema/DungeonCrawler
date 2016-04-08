@@ -2,8 +2,8 @@ package nl.youngcapital.atm.items;
 
 import java.util.Random;
 
-import nl.youngcaptital.atm.effects.Bleed;
-import nl.youngcaptital.atm.effects.Effect;
+import nl.youngcapital.atm.effects.Bleed;
+import nl.youngcapital.atm.effects.Effect;
 
 public class BroadSword extends Item implements Weapon {
 	static final public String DESCRIPTION = "This sword comaplains!";

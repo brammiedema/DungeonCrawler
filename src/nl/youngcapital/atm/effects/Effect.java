@@ -1,4 +1,4 @@
-package nl.youngcaptital.atm.effects;
+package nl.youngcapital.atm.effects;
 
 public abstract class Effect {
 	private int duration; 

@@ -1,4 +1,4 @@
-package nl.youngcaptital.atm.effects;
+package nl.youngcapital.atm.effects;
 
 public class Bleed extends Effect{
 	private int duration = 3;
