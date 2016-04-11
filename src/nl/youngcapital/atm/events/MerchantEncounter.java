@@ -1,7 +1,7 @@
 package nl.youngcapital.atm.events;
 
-import nl.youngcapital.atm.nonplayercharacters.Merchant;
 import nl.youngcapital.atm.nonplayercharacters.NonPlayableCharacter;
+import nl.youngcapital.atm.nonplayercharactersimpl.Merchant;
 
 public class MerchantEncounter extends Event implements Encounter{
 	private String description;

@@ -1,4 +1,4 @@
-package nl.youngcapital.atm.nonplayercharacters;
+package nl.youngcapital.atm.nonplayercharactersimpl;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -7,6 +7,7 @@ import nl.youngcapital.atm.combatsystem.FightableCharacter;
 import nl.youngcapital.atm.effects.Effect;
 import nl.youngcapital.atm.elements.Element;
 import nl.youngcapital.atm.magiceffects.MagicEffect;
+import nl.youngcapital.atm.nonplayercharacters.NonPlayableCharacter;
 
 public class Troll implements NonPlayableCharacter, FightableCharacter {
 	private int healthPoints;

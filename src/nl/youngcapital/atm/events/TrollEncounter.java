@@ -1,7 +1,7 @@
 package nl.youngcapital.atm.events;
 
 import nl.youngcapital.atm.nonplayercharacters.NonPlayableCharacter;
-import nl.youngcapital.atm.nonplayercharacters.Troll;
+import nl.youngcapital.atm.nonplayercharactersimpl.Troll;
 
 public class TrollEncounter extends Event implements Encounter{
 	private Troll troll;

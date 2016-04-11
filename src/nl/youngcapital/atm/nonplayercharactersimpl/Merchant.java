@@ -1,4 +1,4 @@
-package nl.youngcapital.atm.nonplayercharacters;
+package nl.youngcapital.atm.nonplayercharactersimpl;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -11,6 +11,8 @@ import nl.youngcapital.atm.itemsimpl.BroadSword;
 import nl.youngcapital.atm.itemsimpl.DragonFlameSword;
 import nl.youngcapital.atm.itemsimpl.Hamburger;
 import nl.youngcapital.atm.magiceffects.MagicEffect;
+import nl.youngcapital.atm.nonplayercharacters.NonPlayableCharacter;
+import nl.youngcapital.atm.nonplayercharacters.Shop;
 
 public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter{
 	private ArrayList<Item> inventory;
