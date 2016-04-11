@@ -1,13 +1,17 @@
 package nl.youngcapital.atm.combatsystem;
 
-import nl.youngcapital.atm.nonplayercharacters.NonPlayableCharacter;
-import nl.youngcapital.atm.player.Player;
-
 public class CombatSystem {
 	
-	public void fight(Player player, NonPlayableCharacter target){
+	/**
+	 * {@link FightableCharacter} attacker fights {@link FightableCharacter} defender
+	 *  
+	 * @param attacker
+	 * @param defender
+	 */
+	public void fight(FightableCharacter attacker, FightableCharacter defender){
 		
-		// most basic form
-		target.dealDamage(player.getBaseDamage());
+		// most basic form more elaborate would involve countering and reactive battle
+		defender.dealDamage(attacker.getDamage());
+		
 	}
 }

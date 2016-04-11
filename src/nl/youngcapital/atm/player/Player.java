@@ -3,12 +3,13 @@ package nl.youngcapital.atm.player;
 import java.util.ArrayList;
 import java.util.Random;
 
+import nl.youngcapital.atm.combatsystem.FightableCharacter;
 import nl.youngcapital.atm.effects.Effect;
 import nl.youngcapital.atm.items.Item;
 import nl.youngcapital.atm.magiceffects.MagicEffect;
 import nl.youngcapital.atm.world.World;
 
-public class Player {
+public class Player implements FightableCharacter{
 
 	private ArrayList<Item> inventory = new ArrayList<>();
 
@@ -22,6 +23,8 @@ public class Player {
 	
 	private static final int MAX_DAMAGE = 2;
 	private static final int MIN_DAMAGE = 3;
+
+	private static final Random RAN = new Random();
 
 	public Player() {
 		Random ran = new Random();
@@ -110,6 +113,17 @@ public class Player {
 		}
 
 		return sb.toString();
+	}
+
+	@Override
+	public int getDamage() {
+		// TODO Auto-generated method stub
+		return RAN.nextInt(MAX_DAMAGE - MIN_DAMAGE) + MIN_DAMAGE;
+	}
+
+	@Override
+	public void dealDamage(int damage) {
+		this.healthPoints = healthPoints - damage;
 	}
 	
 }

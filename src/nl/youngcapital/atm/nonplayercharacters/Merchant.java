@@ -3,6 +3,7 @@ package nl.youngcapital.atm.nonplayercharacters;
 import java.util.ArrayList;
 import java.util.Random;
 
+import nl.youngcapital.atm.combatsystem.FightableCharacter;
 import nl.youngcapital.atm.effects.Effect;
 import nl.youngcapital.atm.elements.Element;
 import nl.youngcapital.atm.items.BroadSword;
@@ -11,7 +12,7 @@ import nl.youngcapital.atm.items.Hamburger;
 import nl.youngcapital.atm.items.Item;
 import nl.youngcapital.atm.magiceffects.MagicEffect;
 
-public class Merchant implements NonPlayableCharacter, Shop{
+public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter{
 	private ArrayList<Item> inventory;
 	private int value; 
 	private int healthPoints;
@@ -26,8 +27,8 @@ public class Merchant implements NonPlayableCharacter, Shop{
 	private final static String DEFAULT_DESCRIPTION="IT IS A CUTE TROLL!"; 
 	private static final int MAX_HEALTH_POINTS = 20;
 	private static final int MIN_HEALTH_POINTS = 16;
-	private static final int MAX_DAMAGE = 41;
-	private static final int MIN_DAMAGE = 20;
+	private static final int MAX_DAMAGE = 10;
+	private static final int MIN_DAMAGE = 15;
 	private static final Random RAN = new Random();
 
 	public Merchant(String description){
@@ -82,12 +83,6 @@ public class Merchant implements NonPlayableCharacter, Shop{
 	public ArrayList<Item> getInventory(){
 		return this.inventory;
 	}
-
-	@Override
-	public int getAttackDamage() {
-
-		return RAN.nextInt(MAX_DAMAGE - MIN_DAMAGE) + MIN_DAMAGE;
-	}
 	
 	@Override
 	public int getHealthPoints() {
@@ -124,5 +119,15 @@ public class Merchant implements NonPlayableCharacter, Shop{
 		return effects;
 	}
 
+	@Override
+	public int getDamage() {
+		
+		// TODO Auto-generated method stub
+		return RAN.nextInt(MAX_DAMAGE - MIN_DAMAGE) + MIN_DAMAGE;
+	}
 	
+	@Override
+	public boolean isFriendly() {
+		return true;
+	}
 }

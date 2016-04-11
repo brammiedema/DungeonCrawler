@@ -3,11 +3,12 @@ package nl.youngcapital.atm.nonplayercharacters;
 import java.util.ArrayList;
 import java.util.Random;
 
+import nl.youngcapital.atm.combatsystem.FightableCharacter;
 import nl.youngcapital.atm.effects.Effect;
 import nl.youngcapital.atm.elements.Element;
 import nl.youngcapital.atm.magiceffects.MagicEffect;
 
-public class Troll implements NonPlayableCharacter {
+public class Troll implements NonPlayableCharacter, FightableCharacter {
 	private int healthPoints;
 	private ArrayList<Element> elements;
 	private ArrayList<Effect> effects;
@@ -33,7 +34,7 @@ public class Troll implements NonPlayableCharacter {
 	}
 
 	@Override
-	public int getAttackDamage() {
+	public int getDamage() {
 		
 
 		return RAN.nextInt(MAX_DAMAGE - MIN_DAMAGE) + MIN_DAMAGE;
@@ -72,6 +73,11 @@ public class Troll implements NonPlayableCharacter {
 	public ArrayList<Effect> getEffects() {
 		
 		return effects;
+	}
+
+	@Override
+	public boolean isFriendly() {
+		return false;
 	}
 
 }

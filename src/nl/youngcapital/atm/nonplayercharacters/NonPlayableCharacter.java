@@ -8,14 +8,11 @@ import nl.youngcapital.atm.elements.Element;
 
 public interface NonPlayableCharacter {
 	
-	
-	public int getAttackDamage();
+	public boolean isFriendly();
 	
 	public int getHealthPoints();
 	
 	public String getDescription();
-	
-	public void dealDamage(int damage);
 	
 	public ArrayList<Element> getElements();
 	
