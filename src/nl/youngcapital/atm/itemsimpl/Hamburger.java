@@ -1,4 +1,7 @@
-package nl.youngcapital.atm.items;
+package nl.youngcapital.atm.itemsimpl;
+
+import nl.youngcapital.atm.items.Consumable;
+import nl.youngcapital.atm.items.Item;
 
 public class Hamburger extends Item implements Consumable{
 	

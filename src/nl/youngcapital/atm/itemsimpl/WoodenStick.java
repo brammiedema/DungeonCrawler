@@ -1,25 +1,31 @@
-package nl.youngcapital.atm.items;
+package nl.youngcapital.atm.itemsimpl;
 
 import java.util.Random;
 
-import nl.youngcapital.atm.effects.Bleed;
-import nl.youngcapital.atm.effects.Effect;
 
-public class BroadSword extends Item implements Weapon {
-	static final public String DESCRIPTION = "This sword comaplains!";
-	static final public String NAME = "Broadsword";
+import nl.youngcapital.atm.effects.Effect;
+import nl.youngcapital.atm.items.Item;
+import nl.youngcapital.atm.items.MainHand;
+
+public class WoodenStick extends Item implements Weapon, MainHand{
+	
+	static final public String DESCRIPTION = "It's a wooden stick!";
+	static final public String NAME = "Wooden stick";
+	private static final int MAX_DAMAGE = 5;
+	private static final int MIN_DAMAGE = 4;
 	private int minDmg;
 	private int maxDmg;
 	private Effect effect;
 	private Boolean equiped = false;
-	private final int PRICE = 15;
+	private final int PRICE = 7;
+	private final static Random RAN = new Random();
 	
-	public BroadSword() {
-		Random ran = new Random();
+	
+	public WoodenStick() {
+		this.maxDmg = RAN.nextInt(MAX_DAMAGE - MIN_DAMAGE) + this.minDmg;
 		
-		this.minDmg = ran.nextInt(4) + 1;
-		this.maxDmg = ran.nextInt(3) + this.minDmg;
-		this.effect = new Bleed();
+		this.minDmg = RAN.nextInt(maxDmg) - 1;
+		
 	}
 	
 	@Override
@@ -29,8 +35,8 @@ public class BroadSword extends Item implements Weapon {
 
 	@Override
 	public int attack() {
-		Random ran = new Random();
-		int hitDmg = ran.nextInt(maxDmg) + minDmg;	
+		
+		int hitDmg = RAN.nextInt(maxDmg - minDmg) + minDmg;	
 		return hitDmg;
 		
 	}
@@ -67,5 +73,5 @@ public class BroadSword extends Item implements Weapon {
 
 		return this.PRICE;
 	}
-
+	
 }

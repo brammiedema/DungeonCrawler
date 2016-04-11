@@ -1,6 +1,7 @@
-package nl.youngcapital.atm.items;
+package nl.youngcapital.atm.itemsimpl;
 
 import nl.youngcapital.atm.effects.Effect;
+import nl.youngcapital.atm.items.Equipable;
 
 public interface Weapon extends Equipable{
 	

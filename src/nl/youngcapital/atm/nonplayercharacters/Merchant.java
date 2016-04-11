@@ -6,10 +6,10 @@ import java.util.Random;
 import nl.youngcapital.atm.combatsystem.FightableCharacter;
 import nl.youngcapital.atm.effects.Effect;
 import nl.youngcapital.atm.elements.Element;
-import nl.youngcapital.atm.items.BroadSword;
-import nl.youngcapital.atm.items.DragonFlameSword;
-import nl.youngcapital.atm.items.Hamburger;
 import nl.youngcapital.atm.items.Item;
+import nl.youngcapital.atm.itemsimpl.BroadSword;
+import nl.youngcapital.atm.itemsimpl.DragonFlameSword;
+import nl.youngcapital.atm.itemsimpl.Hamburger;
 import nl.youngcapital.atm.magiceffects.MagicEffect;
 
 public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter{
@@ -21,7 +21,6 @@ public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter{
 	private ArrayList<Effect> effects;
 	private ArrayList<MagicEffect> magicEffects;
 
-	
 	private static final int MAXVALUE = 50;
 	private static final int MINVALUE = 30; 
 	private final static String DEFAULT_DESCRIPTION="a merchant selling valuebles."; 
@@ -139,7 +138,24 @@ public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter{
 
 	@Override
 	public int getHealth() {
-		// TODO Auto-generated method stub
 		return this.healthPoints;
+	}
+
+	@Override
+	public Item buyItem(String itemName) {
+		for(Item item : inventory){
+			if(item.getName().toLowerCase().equals(itemName.toLowerCase())){
+				return item;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public int SellItem(Item item) {
+		int price = (int) (item.getPrice() * 0.75);
+		item = null;
+		
+		return price;
 	}
 }
