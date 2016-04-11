@@ -12,7 +12,7 @@ public abstract class Effect {
 	public Effect(int duration, String name, int effectProcChance){
 		this.duration= duration;
 		this.name = name;
-		this.effectProc = effectProc;
+		this.effectProc = effectProcChance;
 	}
 	
 	abstract int getDuration();

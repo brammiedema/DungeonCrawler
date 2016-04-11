@@ -24,21 +24,27 @@ public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter{
 	
 	private static final int MAXVALUE = 50;
 	private static final int MINVALUE = 30; 
-	private final static String DEFAULT_DESCRIPTION="IT IS A CUTE TROLL!"; 
+	private final static String DEFAULT_DESCRIPTION="a merchant selling valuebles."; 
 	private static final int MAX_HEALTH_POINTS = 20;
 	private static final int MIN_HEALTH_POINTS = 16;
 	private static final int MAX_DAMAGE = 10;
-	private static final int MIN_DAMAGE = 15;
+	private static final int MIN_DAMAGE = 5;
 	private static final Random RAN = new Random();
 
 	public Merchant(String description){
 		this();
 		this.description = description;
+
+		
 	}
 	
 	public Merchant(){
 		this.description = DEFAULT_DESCRIPTION;
 		healthPoints = RAN.nextInt(MAX_HEALTH_POINTS - MIN_HEALTH_POINTS) + MIN_HEALTH_POINTS;
+		inventory = new ArrayList<>();
+		effects = new ArrayList<>();
+		magicEffects = new ArrayList<>();
+		elements = new ArrayList<>();
 		fillInventory();
 	}
 	
@@ -85,12 +91,6 @@ public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter{
 	}
 	
 	@Override
-	public int getHealthPoints() {
-	
-		return healthPoints;
-	}
-
-	@Override
 	public void dealDamage(int damage) {
 
 		this.healthPoints = healthPoints - damage;
@@ -98,25 +98,25 @@ public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter{
 
 	@Override
 	public String getDescription() {
-		return description;
+		return this.description;
 	}
 
 	@Override
 	public ArrayList<Element> getElements() {
 		
-		return elements;
+		return this.elements;
 	}
 
 	@Override
 	public ArrayList<MagicEffect> getMagicEffect() {
 		
-		return magicEffects;
+		return this.magicEffects;
 	}
 
 	@Override
 	public ArrayList<Effect> getEffects() {
 		
-		return effects;
+		return this.effects;
 	}
 
 	@Override
@@ -129,5 +129,17 @@ public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter{
 	@Override
 	public boolean isFriendly() {
 		return true;
+	}
+
+
+	@Override
+	public ArrayList<Effect> getEffect() {
+		return this.effects;
+	}
+
+	@Override
+	public int getHealth() {
+		// TODO Auto-generated method stub
+		return this.healthPoints;
 	}
 }

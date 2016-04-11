@@ -14,9 +14,9 @@ public abstract class Square {
 		this.description = description;
 	}
 	
-	abstract String getDescription();
+	public abstract String getDescription();
 	
-	abstract boolean hasEvent();
+	public abstract boolean hasEvent();
 	
-	abstract Event getEvent();
+	public abstract Event getEvent();
 }

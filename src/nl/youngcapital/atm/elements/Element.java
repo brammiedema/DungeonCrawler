@@ -15,10 +15,10 @@ public abstract class Element {
 		this.weaknessElement = weaknessElement;
 	}
 	
-	public abstract Element GetStrengthElement();
+	public abstract Element getStrengthElement();
 	
-	public abstract Element GetWeaknessElement();
+	public abstract Element getWeaknessElement();
 	
-	public abstract String GetName();
+	public abstract String getName();
 	
 }

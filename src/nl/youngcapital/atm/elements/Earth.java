@@ -15,19 +15,19 @@ public class Earth extends Element {
 	}
 
 	@Override
-	public Element GetStrengthElement() {
+	public Element getStrengthElement() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Element GetWeaknessElement() {
+	public Element getWeaknessElement() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String GetName() {
+	public String getName() {
 		// TODO Auto-generated method stub
 		return NAME;
 	}

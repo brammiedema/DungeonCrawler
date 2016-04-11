@@ -5,6 +5,7 @@ import java.util.Random;
 
 import nl.youngcapital.atm.combatsystem.FightableCharacter;
 import nl.youngcapital.atm.effects.Effect;
+import nl.youngcapital.atm.elements.Element;
 import nl.youngcapital.atm.items.Item;
 import nl.youngcapital.atm.magiceffects.MagicEffect;
 import nl.youngcapital.atm.world.World;
@@ -19,10 +20,11 @@ public class Player implements FightableCharacter{
 	
 	private ArrayList<Effect> effects;	
 	private ArrayList<MagicEffect> magicEffects;
+	private ArrayList<Element> elements;
 	private int healthPoints = 100;
 	
-	private static final int MAX_DAMAGE = 2;
-	private static final int MIN_DAMAGE = 3;
+	private static final int MAX_DAMAGE = 3;
+	private static final int MIN_DAMAGE = 2;
 
 	private static final Random RAN = new Random();
 
@@ -31,7 +33,9 @@ public class Player implements FightableCharacter{
 		this.x = Math.abs((ran.nextInt() % World.MAX_X_SIZE_WORLD));
 		this.y = Math.abs((ran.nextInt() % World.MAX_Y_SIZE_WORLD));
 		this.z = Math.abs((ran.nextInt() % World.MAX_Z_SIZE_WORLD));
-
+		effects = new ArrayList<>();
+		magicEffects = new ArrayList<>();
+		elements = new ArrayList<>();
 	}
 
 	public Player(int x, int Y, int Z) {
@@ -90,12 +94,7 @@ public class Player implements FightableCharacter{
 
 	public ArrayList<MagicEffect> getMagicEffects() {
 		return magicEffects;
-	}
-	
-	public int getHealthPoints(){
-		return healthPoints;
-	}
-	
+	}	
 
 	@Override
 	public String toString() {
@@ -117,13 +116,29 @@ public class Player implements FightableCharacter{
 
 	@Override
 	public int getDamage() {
-		// TODO Auto-generated method stub
 		return RAN.nextInt(MAX_DAMAGE - MIN_DAMAGE) + MIN_DAMAGE;
 	}
 
 	@Override
 	public void dealDamage(int damage) {
 		this.healthPoints = healthPoints - damage;
+	}
+
+	@Override
+	public ArrayList<Element> getElements() {
+		// TODO might change this logic depending on the element of weapons and armor etcc
+		
+		return this.elements;
+	}
+
+	@Override
+	public ArrayList<Effect> getEffect() {
+		return this.effects;
+	}
+
+	@Override
+	public int getHealth() {
+		return this.healthPoints;
 	}
 	
 }

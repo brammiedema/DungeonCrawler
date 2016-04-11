@@ -25,6 +25,9 @@ public class Troll implements NonPlayableCharacter, FightableCharacter {
 	public Troll() {
 		this.description = DEFAULT_DESCRIPTION;
 		healthPoints = RAN.nextInt(MAX_HEALTH_POINTS - MIN_HEALTH_POINTS) + MIN_HEALTH_POINTS;
+		effects = new ArrayList<>();
+		magicEffects = new ArrayList<>();
+		elements = new ArrayList<>();
 	}
 	
 	public Troll(String description) {
@@ -40,12 +43,6 @@ public class Troll implements NonPlayableCharacter, FightableCharacter {
 		return RAN.nextInt(MAX_DAMAGE - MIN_DAMAGE) + MIN_DAMAGE;
 	}
 	
-	@Override
-	public int getHealthPoints() {
-		
-		return healthPoints;
-	}
-
 	@Override
 	public void dealDamage(int damage) {
 		
@@ -78,6 +75,17 @@ public class Troll implements NonPlayableCharacter, FightableCharacter {
 	@Override
 	public boolean isFriendly() {
 		return false;
+	}
+
+	@Override
+	public int getHealth() {
+		return this.healthPoints;
+	}
+
+	@Override
+	public ArrayList<Effect> getEffect() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

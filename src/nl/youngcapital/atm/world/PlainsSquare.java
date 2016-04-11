@@ -48,13 +48,13 @@ public class PlainsSquare extends Square{
 	}
 
 	@Override
-	Event getEvent() {
+	public Event getEvent() {
 
 		return event;
 	}
 	
 	@Override
-	boolean hasEvent() {
+	public boolean hasEvent() {
 		if(event == null){
 			return false;
 		}

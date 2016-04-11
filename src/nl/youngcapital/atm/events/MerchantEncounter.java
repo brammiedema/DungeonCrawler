@@ -1,6 +1,7 @@
 package nl.youngcapital.atm.events;
 
 import nl.youngcapital.atm.nonplayercharacters.Merchant;
+import nl.youngcapital.atm.nonplayercharacters.NonPlayableCharacter;
 
 public class MerchantEncounter extends Event implements Encounter{
 	private String description;
@@ -21,8 +22,10 @@ public class MerchantEncounter extends Event implements Encounter{
 		return description;
 	}
 	
-	public Merchant getMerchant(){
-		return this.merchant;
+	@Override
+	public NonPlayableCharacter getNonPlayableCharacter() {
+		
+		 return this.merchant;
 	}
 
 	
