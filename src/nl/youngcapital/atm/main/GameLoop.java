@@ -32,7 +32,7 @@ public class GameLoop {
 				switch (direction.toLowerCase()) {
 				case "north":
 					gw.moveCharacterNorth(p);
-					break;
+					break; 
 
 				case "south":
 					gw.moveCharacterSouth(p);
