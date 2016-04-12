@@ -22,6 +22,7 @@ public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter{
 	private ArrayList<Element> elements;
 	private ArrayList<Effect> effects;
 	private ArrayList<MagicEffect> magicEffects;
+	private int armor;
 
 	private static final int MAXVALUE = 50;
 	private static final int MINVALUE = 30; 
@@ -46,6 +47,7 @@ public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter{
 		effects = new ArrayList<>();
 		magicEffects = new ArrayList<>();
 		elements = new ArrayList<>();
+		armor = 4;
 		fillInventory();
 	}
 	
@@ -115,15 +117,7 @@ public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter{
 	}
 
 	@Override
-	public ArrayList<Effect> getEffects() {
-		
-		return this.effects;
-	}
-
-	@Override
 	public int getDamage() {
-		
-		// TODO Auto-generated method stub
 		return RAN.nextInt(MAX_DAMAGE - MIN_DAMAGE) + MIN_DAMAGE;
 	}
 	
@@ -132,9 +126,14 @@ public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter{
 		return true;
 	}
 
+	@Override
+	public void setEffect(Effect effect) {
+		this.effects.add(effect);
+	}
+
 
 	@Override
-	public ArrayList<Effect> getEffect() {
+	public ArrayList<Effect> getEffects() {
 		return this.effects;
 	}
 
@@ -159,5 +158,10 @@ public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter{
 		item = null;
 		
 		return price;
+	}
+
+	@Override
+	public int getArmor() {
+		return armor;
 	}
 }

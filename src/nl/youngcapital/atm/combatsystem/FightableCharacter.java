@@ -7,6 +7,17 @@ import nl.youngcapital.atm.elements.Element;
 
 public interface FightableCharacter {
 	
+	
+	public void setEffect(Effect effect);
+	
+	/**
+	 * Returns current health
+	 * 
+	 * @return
+	 */
+	public int getArmor();
+	
+	
 	/**
 	 * Returns current health
 	 * 
@@ -41,7 +52,7 @@ public interface FightableCharacter {
 	 * 
 	 * @return
 	 */
-	public ArrayList<Effect> getEffect();	
+	public ArrayList<Effect> getEffects();	
 	
 	
 }

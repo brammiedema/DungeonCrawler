@@ -6,9 +6,18 @@ import nl.youngcapital.atm.nonplayercharactersimpl.Merchant;
 public class MerchantEncounter extends Event implements Encounter{
 	private String description;
 	private Merchant merchant;
+	final static private String DEFAULT_DESCRIPTION= "A friendly merchant shows his friendly face!";
 	
-	public MerchantEncounter(){
+	public MerchantEncounter() {
+		this.description = DEFAULT_DESCRIPTION;
 		merchant = new Merchant();
+		
+	}
+	
+	public MerchantEncounter(String description) {
+		this();
+		this.description = description;
+		
 	}
 
 	@Override

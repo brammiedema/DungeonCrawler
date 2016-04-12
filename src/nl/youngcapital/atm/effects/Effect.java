@@ -1,5 +1,7 @@
 package nl.youngcapital.atm.effects;
 
+import nl.youngcapital.atm.elements.Element;
+
 public abstract class Effect {
 	private int duration; 
 	private String name;
@@ -15,10 +17,15 @@ public abstract class Effect {
 		this.effectProc = effectProcChance;
 	}
 	
-	abstract int getDuration();
+	public abstract Element getElement();
 	
-	abstract String getName();
+	public abstract int getDuration();
 	
+	public abstract String getName();
+		
+	public abstract int effectProcChance();
 	
-	abstract int effectProcChance();
+	public abstract void substractDuration();
+	
+	public abstract void addDuration();
 }

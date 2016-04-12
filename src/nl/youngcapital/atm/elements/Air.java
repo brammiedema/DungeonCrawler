@@ -5,25 +5,27 @@ public class Air extends Element {
 	private Element weaknessElement;
 	static final private String NAME = "Air";
 
+	static final private Element DEFAULT_STRENGHT_ELEMENT = new Fire();
+	static final private Element DEFAULT_WEAKNESS_ELEMENT = new Earth();
+	
 	public Air() {
-
+		super(NAME, DEFAULT_WEAKNESS_ELEMENT, DEFAULT_STRENGHT_ELEMENT);
 	}
 
-	public Air(Element weaknessElement, Element strengthElement) {
-		this.strengthElement = strengthElement;
-		this.weaknessElement = weaknessElement;
+	public Air(String name, Element weaknessElement, Element strengthElement) {
+		super(name, weaknessElement, strengthElement);
 	}
 
 	@Override
 	public Element getStrengthElement() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return strengthElement;
 	}
 
 	@Override
 	public Element getWeaknessElement() {
 		// TODO Auto-generated method stub
-		return null;
+		return weaknessElement;
 	}
 
 	@Override

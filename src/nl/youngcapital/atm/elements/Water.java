@@ -4,26 +4,28 @@ public class Water extends Element {
 	private Element strengthElement;
 	private Element weaknessElement;
 	static final private String NAME = "Water";
+	
+	static final private Element DEFAULT_STRENGHT_ELEMENT = new Earth();
+	static final private Element DEFAULT_WEAKNESS_ELEMENT = new Fire();
 
 	public Water() {
-
+		super(NAME, DEFAULT_WEAKNESS_ELEMENT, DEFAULT_STRENGHT_ELEMENT);
 	}
 
-	public Water(Element weaknessElement, Element strengthElement) {
-		this.strengthElement = strengthElement;
-		this.weaknessElement = weaknessElement;
+	public Water(String name, Element weaknessElement, Element strengthElement) {
+		super(name, weaknessElement, strengthElement);
 	}
 
 	@Override
 	public Element getStrengthElement() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return strengthElement;
 	}
 
 	@Override
 	public Element getWeaknessElement() {
 		// TODO Auto-generated method stub
-		return null;
+		return weaknessElement;
 	}
 
 	@Override
@@ -31,5 +33,4 @@ public class Water extends Element {
 		// TODO Auto-generated method stub
 		return NAME;
 	}
-
 }

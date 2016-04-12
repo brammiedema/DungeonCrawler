@@ -5,7 +5,7 @@ import nl.youngcapital.atm.events.Event;
 public abstract class Square {
 	
 	private String description;
-	private Event event;
+
 	public Square(){
 		super();
 	}

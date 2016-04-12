@@ -1,8 +1,5 @@
 package nl.youngcapital.atm.main;
 
-import nl.youngcapital.atm.player.Player;
-import nl.youngcapital.atm.world.World;
-
 public class Main implements Runnable{
 	
 	

@@ -5,37 +5,43 @@ import nl.youngcapital.atm.elements.Fire;
 
 public class DragonFireBurn extends MagicEffect implements DamageOverTime {
 	
-	private int duration;
-	private String name;
-	private int effectProcChance;
-	final private Element element = new Fire();
+	final static private int DURATION = 8;
+	final static private String NAME = "Dragon fire burn";
+	final static private int DEFAULT_EFFECT_PROC_CHANCE = 20;
+	final static private Element ELEMENT = new Fire();
+	final private static int DAMAGE = 5;
 	
 	public DragonFireBurn(){
-		super("Dragonfire burn", 4);
+		
 	}
 	
 	@Override
 	String getName() {
-		return name;
-		
+		return NAME;
 	}
 
-	@Override
+
 	public Element getElement() {
-		return element;
+		return ELEMENT;
 		
 	}
 
 	@Override
 	int effectProcChance() {
-		return effectProcChance;
+		return DEFAULT_EFFECT_PROC_CHANCE;
 		
 	}
 	
-	@Override
-	public int getDotDuration() {
-		return duration;
+	
+	public int getDuration() {
+		return DURATION;
 		
+	}
+
+	@Override
+	public int getDotTickDamage() {
+		// TODO Auto-generated method stub
+		return DAMAGE;
 	}
 	
 }

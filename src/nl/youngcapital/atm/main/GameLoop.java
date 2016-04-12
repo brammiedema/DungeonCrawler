@@ -71,45 +71,39 @@ public class GameLoop {
 
 			if (ev instanceof Encounter) {
 				Encounter en = (Encounter) ev;
+
 				System.out.println("You see a " + en.getDescription());
 				System.out.println("What do you do?");
-
 				if (en.isFriendly()) {
 					System.out.println(en.getDescription() + " appears to be friendly");
-				}
-
-				String action = s.next();
-				if (action.equals("attack")) {
-
-					NonPlayableCharacter npc = en.getNonPlayableCharacter();
-
-					if (npc instanceof FightableCharacter) {
-						FightableCharacter t = (FightableCharacter) npc;
-
-						while (cb.fight(p, t)) {
-							cb.fight(t, p);
-							System.out.println("player: " + p.getHealth());
-							System.out.println("troll: " + t.getHealth());
-						}
-					}
-					if (action.equals("shop")) {
-						if (npc instanceof Shop) {
-							Shop shop = (Shop) npc;
-							
-
-						}
-					} else {
-						System.out.println("This is not a shop");
-					}
-
 				} else {
 					FightableCharacter t = en.getNonPlayableCharacter();
 					// combat
 					while (cb.fight(p, t)) {
 						cb.fight(t, p);
-						System.out.println("player: " + p.getHealth());
-						System.out.println("troll: " + t.getHealth());
+						System.out.println("Player: " + p.getHealth());
+						System.out.println("Enemy: " + t.getHealth());
 					}
+				}
+				String action = s.next();
+				NonPlayableCharacter npc = en.getNonPlayableCharacter();
+				if (action.equals("attack")) {
+					if (npc instanceof FightableCharacter) {
+						FightableCharacter t = (FightableCharacter) npc;
+
+						while (cb.fight(p, t)) {
+							cb.fight(t, p);
+						}
+					}
+
+				} else if (action.equals("shop")) {
+					if (npc instanceof Shop) {
+						Shop shop = (Shop) npc;
+
+					}
+				} else {
+					System.out.println("This is not a shop");
+
 				}
 
 			}

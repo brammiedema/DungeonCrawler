@@ -10,9 +10,10 @@ public abstract class Element {
 		
 	}
 	
-	public Element(Element weaknessElement, Element strengthElement){
+	public Element(String name, Element weaknessElement, Element strengthElement){
 		this.strengthElement = strengthElement;
 		this.weaknessElement = weaknessElement;
+		this.name = name;
 	}
 	
 	public abstract Element getStrengthElement();

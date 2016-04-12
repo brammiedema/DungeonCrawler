@@ -5,25 +5,27 @@ public class Fire extends Element{
 	private Element weaknessElement;
 	final static private String NAME = "Fire";
 	
+	static final private Element DEFAULT_STRENGHT_ELEMENT = new Water();
+	static final private Element DEFAULT_WEAKNESS_ELEMENT = new Air();
+	
 	public Fire(){
-		
+		super(NAME, DEFAULT_WEAKNESS_ELEMENT, DEFAULT_STRENGHT_ELEMENT);
 	}
 	
 	public Fire(String name, Element weaknessElement, Element strengthElement){
-		this.strengthElement = strengthElement;
-		this.weaknessElement = weaknessElement;
+		super(name, weaknessElement, strengthElement);
 	}
 	
 	@Override
 	public Element getStrengthElement() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return strengthElement;
 	}
 
 	@Override
 	public Element getWeaknessElement() {
 		// TODO Auto-generated method stub
-		return null;
+		return weaknessElement;
 	}
 
 	@Override
@@ -31,6 +33,5 @@ public class Fire extends Element{
 		// TODO Auto-generated method stub
 		return NAME;
 	}
-	
 
 }

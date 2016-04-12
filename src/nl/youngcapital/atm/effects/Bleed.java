@@ -1,9 +1,12 @@
 package nl.youngcapital.atm.effects;
 
-public class Bleed extends Effect{
+import nl.youngcapital.atm.elements.Element;
+
+public class Bleed extends Effect implements HealthEffect{
 	private int duration;
 	private String name;
 	private int effectProc;
+	private static final int DAMAGE = 2;
 	
 	private static final int DEFAULT_DURATION = 3;
 	private final static String NAME = "bleed";
@@ -19,19 +22,38 @@ public class Bleed extends Effect{
 	}
 
 	@Override
-	int getDuration() {
+	public int getDuration() {
 		return duration;
 	}
 
 	@Override
-	String getName() {
+	public String getName() {
 		return name;
 	}
 
 	@Override
-	int effectProcChance() {
-		// TODO Auto-generated method stub
+	public int effectProcChance() {
 		return effectProc;
+	}
+
+	@Override
+	public void substractDuration() {
+		this.duration =- 1;
+	}
+
+	@Override
+	public void addDuration() {
+		this.duration =+ DEFAULT_DURATION;
+	}
+
+	@Override
+	public int getHealthChangeValue() {
+		return DAMAGE;
+	}
+
+	@Override
+	public Element getElement() {
+		return null;
 	}
 	
 }

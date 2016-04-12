@@ -8,8 +8,8 @@ import nl.youngcapital.atm.items.TwoHanded;
 
 public class StoneMace extends Item implements Weapon, TwoHanded  {
 
-	static final public String DESCRIPTION = "It's a wooden stick!";
-	static final public String NAME = "Wooden stick";
+	static final private String DESCRIPTION = "It's a wooden stick!";
+	static final private String NAME = "Wooden stick";
 	private static final int MAX_DAMAGE = 10;
 	private static final int MIN_DAMAGE = 15;
 	private int minDmg;

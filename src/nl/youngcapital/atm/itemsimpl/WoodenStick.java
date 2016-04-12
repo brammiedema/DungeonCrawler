@@ -11,8 +11,8 @@ public class WoodenStick extends Item implements Weapon, MainHand{
 	
 	static final public String DESCRIPTION = "It's a wooden stick!";
 	static final public String NAME = "Wooden stick";
-	private static final int MAX_DAMAGE = 5;
-	private static final int MIN_DAMAGE = 4;
+	private static final int MAX_DAMAGE = 7;
+	private static final int MIN_DAMAGE = 3;
 	private int minDmg;
 	private int maxDmg;
 	private Effect effect;
@@ -22,10 +22,9 @@ public class WoodenStick extends Item implements Weapon, MainHand{
 	
 	
 	public WoodenStick() {
-		this.maxDmg = RAN.nextInt(MAX_DAMAGE - MIN_DAMAGE) + this.minDmg;
-		
-		this.minDmg = RAN.nextInt(maxDmg) - 1;
-		
+		this.maxDmg = RAN.nextInt(MAX_DAMAGE - MIN_DAMAGE) + MIN_DAMAGE;	
+		this.minDmg = RAN.nextInt(MIN_DAMAGE) + MIN_DAMAGE;
+
 	}
 	
 	@Override

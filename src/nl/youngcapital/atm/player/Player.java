@@ -17,6 +17,7 @@ public class Player implements FightableCharacter{
 	private int x;
 	private int y;
 	private int z;
+	private CharacterSheet cs;
 	
 	private ArrayList<Effect> effects;	
 	private ArrayList<MagicEffect> magicEffects;
@@ -25,6 +26,7 @@ public class Player implements FightableCharacter{
 	
 	private static final int MAX_DAMAGE = 3;
 	private static final int MIN_DAMAGE = 2;
+	private static final int BASE_ARMOR = 2;
 
 	private static final Random RAN = new Random();
 
@@ -33,6 +35,7 @@ public class Player implements FightableCharacter{
 		this.x = Math.abs((ran.nextInt() % World.MAX_X_SIZE_WORLD));
 		this.y = Math.abs((ran.nextInt() % World.MAX_Y_SIZE_WORLD));
 		this.z = Math.abs((ran.nextInt() % World.MAX_Z_SIZE_WORLD));
+		cs = CharacterSheet.getInstance();
 		effects = new ArrayList<>();
 		magicEffects = new ArrayList<>();
 		elements = new ArrayList<>();
@@ -88,31 +91,10 @@ public class Player implements FightableCharacter{
 		return inventory;
 	}
 
-	public ArrayList<Effect> getEffects() {
-		return effects;
-	}
 
 	public ArrayList<MagicEffect> getMagicEffects() {
 		return magicEffects;
 	}	
-
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("location (X, Y, Z): ");
-
-		sb.append(x);
-		sb.append(", ");
-		sb.append(y);
-		sb.append(", ");
-		sb.append(z);
-
-		for (Item it : inventory) {
-			sb.append(it + "\n");
-		}
-
-		return sb.toString();
-	}
 
 	@Override
 	public int getDamage() {
@@ -132,13 +114,42 @@ public class Player implements FightableCharacter{
 	}
 
 	@Override
-	public ArrayList<Effect> getEffect() {
+	public ArrayList<Effect> getEffects() {
 		return this.effects;
 	}
 
 	@Override
 	public int getHealth() {
 		return this.healthPoints;
+	}
+
+	@Override
+	public int getArmor() {
+		System.out.println(cs.getTotalArmor() + BASE_ARMOR);
+		return cs.getTotalArmor() + BASE_ARMOR;
+	}
+	
+	@Override
+	public void setEffect(Effect effect) {
+		this.effects.add(effect);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("location (X, Y, Z): ");
+
+		sb.append(x);
+		sb.append(", ");
+		sb.append(y);
+		sb.append(", ");
+		sb.append(z);
+
+		for (Item it : inventory) {
+			sb.append(it + "\n");
+		}
+
+		return sb.toString();
 	}
 	
 }

@@ -15,6 +15,7 @@ public class Troll implements NonPlayableCharacter, FightableCharacter {
 	private ArrayList<Effect> effects;
 	private ArrayList<MagicEffect> magicEffects;
 	private String description;
+	private int armor;
 	
 	private final static String DEFAULT_DESCRIPTION="IT IS A CUTE TROLL!"; 
 	private static final int MAX_HEALTH_POINTS = 41;
@@ -29,6 +30,7 @@ public class Troll implements NonPlayableCharacter, FightableCharacter {
 		effects = new ArrayList<>();
 		magicEffects = new ArrayList<>();
 		elements = new ArrayList<>();
+		armor = 14;
 	}
 	
 	public Troll(String description) {
@@ -68,12 +70,6 @@ public class Troll implements NonPlayableCharacter, FightableCharacter {
 	}
 
 	@Override
-	public ArrayList<Effect> getEffects() {
-		
-		return effects;
-	}
-
-	@Override
 	public boolean isFriendly() {
 		return false;
 	}
@@ -82,11 +78,20 @@ public class Troll implements NonPlayableCharacter, FightableCharacter {
 	public int getHealth() {
 		return this.healthPoints;
 	}
+	
+	@Override
+	public void setEffect(Effect effect) {
+		this.effects.add(effect);
+	}
 
 	@Override
-	public ArrayList<Effect> getEffect() {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Effect> getEffects() {
+		return this.effects;
+	}
+
+	@Override
+	public int getArmor() {
+		return armor;
 	}
 
 }

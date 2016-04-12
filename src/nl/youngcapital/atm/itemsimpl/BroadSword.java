@@ -10,8 +10,8 @@ import nl.youngcapital.atm.items.MainHand;
 public class BroadSword extends Item implements Weapon, MainHand {
 	static final public String DESCRIPTION = "This sword comaplains!";
 	static final public String NAME = "Broadsword";
-	private static final int MAX_DAMAGE = 8;
-	private static final int MIN_DAMAGE = 6;
+	private static final int MAX_DAMAGE = 12;
+	private static final int MIN_DAMAGE = 7;
 	
 	private int minDmg;
 	private int maxDmg;
@@ -21,9 +21,9 @@ public class BroadSword extends Item implements Weapon, MainHand {
 	private final static Random RAN = new Random();
 	
 	public BroadSword() {	
-		this.maxDmg = RAN.nextInt(MAX_DAMAGE - MIN_DAMAGE) + this.minDmg;
+		this.maxDmg = RAN.nextInt(MAX_DAMAGE - MIN_DAMAGE) + MIN_DAMAGE;
 		
-		this.minDmg = RAN.nextInt(maxDmg) - 1;
+		this.minDmg = RAN.nextInt(MIN_DAMAGE) + MIN_DAMAGE;
 		
 		this.effect = new Bleed();
 	}
