@@ -78,8 +78,10 @@ public class GameLoop {
 					System.out.println(en.getDescription() + " appears to be friendly");
 				} else {
 					FightableCharacter t = en.getNonPlayableCharacter();
-					// combat
+					//TODO:: make a function call for combat 
+					// combat initated
 					while (cb.fight(p, t)) {
+						
 						cb.fight(t, p);
 						System.out.println("Player: " + p.getHealth());
 						System.out.println("Enemy: " + t.getHealth());
@@ -90,7 +92,8 @@ public class GameLoop {
 				if (action.equals("attack")) {
 					if (npc instanceof FightableCharacter) {
 						FightableCharacter t = (FightableCharacter) npc;
-
+						//TODO:: make a function call for combat 
+						// combat initaited
 						while (cb.fight(p, t)) {
 							cb.fight(t, p);
 						}

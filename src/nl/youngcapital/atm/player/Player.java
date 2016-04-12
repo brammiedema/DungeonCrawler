@@ -98,7 +98,10 @@ public class Player implements FightableCharacter{
 
 	@Override
 	public int getDamage() {
-		return RAN.nextInt(MAX_DAMAGE - MIN_DAMAGE) + MIN_DAMAGE;
+		int dmg = RAN.nextInt(1+(MAX_DAMAGE - MIN_DAMAGE)) + MIN_DAMAGE;
+		System.out.println("player dmg: "+dmg);
+		
+		return dmg;
 	}
 
 	@Override
@@ -107,9 +110,7 @@ public class Player implements FightableCharacter{
 	}
 
 	@Override
-	public ArrayList<Element> getElements() {
-		// TODO might change this logic depending on the element of weapons and armor etcc
-		
+	public ArrayList<Element> getElements() {		
 		return this.elements;
 	}
 
@@ -125,7 +126,6 @@ public class Player implements FightableCharacter{
 
 	@Override
 	public int getArmor() {
-		System.out.println(cs.getTotalArmor() + BASE_ARMOR);
 		return cs.getTotalArmor() + BASE_ARMOR;
 	}
 	
