@@ -13,24 +13,8 @@ import nl.youngcapital.atm.world.World;
 
 public class Player implements FightableCharacter {
 
-	// private ArrayList<Item> inventory = new ArrayList<>();
-	//
 	private PlayerData playerData = new PlayerData();
 
-	//
-	// private int x;
-	// private int y;
-	// private int z;
-	// private CharacterSheet cs;
-	//
-	// private ArrayList<Effect> effects;
-	// private ArrayList<MagicEffect> magicEffects;
-	// private ArrayList<Element> elements;
-	// private int healthPoints = 100;
-	//
-	// private static final int MAX_DAMAGE = 3;
-	// private static final int MIN_DAMAGE = 2;
-	// private static final int BASE_ARMOR = 2;
 	private CharacterSheet cs;
 
 	private static final Random RAN = new Random();

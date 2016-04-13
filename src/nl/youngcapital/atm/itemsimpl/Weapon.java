@@ -5,7 +5,6 @@ import nl.youngcapital.atm.items.Equipable;
 
 public interface Weapon extends Equipable{
 	
-	
 	public Effect getEffect();
 	
 	public int attack();
