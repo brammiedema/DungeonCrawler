@@ -32,7 +32,7 @@ public class Bleed extends Effect implements HealthEffect{
 	}
 
 	@Override
-	public int effectProcChance() {
+	public int getEffectProc() {
 		return effectProc;
 	}
 

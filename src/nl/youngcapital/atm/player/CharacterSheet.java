@@ -1,30 +1,24 @@
 package nl.youngcapital.atm.player;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import org.hibernate.annotations.GenericGenerator;
+
 import nl.youngcapital.atm.items.Item;
-import nl.youngcapital.atm.itemsimpl.WoodenStick;
+import nl.youngcapital.atm.itemsimpl.Weapon;
+
 
 public class CharacterSheet {
 	
-	private static CharacterSheet cs;
+	private long id;
 	private Item helm;
-	private Item mainHand = new WoodenStick();
+	private Weapon weapon;
 	private Item offHand;
 	private Item leftShoe;
 	private Item rightShoe;	
-	
-	private CharacterSheet(){
 		
-	}
-	
-	public static CharacterSheet getInstance(){
-		
-		if(cs == null){
-			cs = new CharacterSheet();
-		}
-		
-		return cs;
-	}
-	
 	public Item getHelm() {
 		return helm;
 	}
@@ -33,12 +27,12 @@ public class CharacterSheet {
 		this.helm = helm;
 	}
 	
-	public Item getMainHand() {
-		return mainHand;
+	public Weapon getWeapon() {
+		return weapon;
 	}
 	
-	public void setMainHand(Item mainHand) {
-		this.mainHand = mainHand;
+	public void setWeapon(Weapon weapon) {
+		this.weapon = weapon;
 	}
 	
 	public Item getOffHand() {
@@ -65,10 +59,12 @@ public class CharacterSheet {
 		this.rightShoe = rightShoe;
 	}
 
-	public int getTotalArmor() {
-		return 0;
+	public Long getId() {
+		return id;
 	}
 
-	
+	public void setId(long id) {
+		this.id = id;
+	}
 	
 }

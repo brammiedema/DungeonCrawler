@@ -4,11 +4,13 @@ import java.util.Scanner;
 
 import nl.youngcapital.atm.combatsystem.CombatSystem;
 import nl.youngcapital.atm.combatsystem.FightableCharacter;
+import nl.youngcapital.atm.data.DataAccessObject;
 import nl.youngcapital.atm.events.Encounter;
 import nl.youngcapital.atm.events.Event;
 import nl.youngcapital.atm.nonplayercharacters.NonPlayableCharacter;
 import nl.youngcapital.atm.nonplayercharacters.Shop;
 import nl.youngcapital.atm.player.Player;
+import nl.youngcapital.atm.player.PlayerData;
 import nl.youngcapital.atm.world.Square;
 import nl.youngcapital.atm.world.World;
 
@@ -27,7 +29,9 @@ public class GameLoop {
 		while (true) {
 
 			System.out.println("You see these accessible directions: ");
-			System.out.println(gw.getPossibleDirections(p.getX(), p.getY(), p.getZ()));
+			System.out.println(p.getPlayerData().getX() + " " + p.getPlayerData().getY() + " " + p.getPlayerData().getZ());
+			System.out.println(gw.getPossibleDirections(p.getPlayerData().getX(), p.getPlayerData().getY(),
+					p.getPlayerData().getZ()));
 			String direction = s.next();
 			if (!direction.equals("q") || !direction.equals("quit")) {
 
@@ -61,11 +65,12 @@ public class GameLoop {
 	}
 
 	private void handleTurn(Player p) {
-		System.out.println("x: " + p.getX());
-		System.out.println("y: " + p.getY());
-		System.out.println("z: " + p.getZ());
+		System.out.println("x: " + p.getPlayerData().getX());
+		System.out.println("y: " + p.getPlayerData().getY());
+		System.out.println("z: " + p.getPlayerData().getZ());
 
-		Square currentSquare = gw.getCurrentSquare(p.getX(), p.getY(), p.getZ());
+		Square currentSquare = gw.getCurrentSquare(p.getPlayerData().getX(), p.getPlayerData().getY(),
+				p.getPlayerData().getZ());
 		if (currentSquare.hasEvent()) {
 			Event ev = currentSquare.getEvent();
 
@@ -73,16 +78,18 @@ public class GameLoop {
 				Encounter en = (Encounter) ev;
 
 				System.out.println("You see a " + en.getDescription());
-				System.out.println("What do you do?");
+
 				if (en.isFriendly()) {
 					System.out.println(en.getDescription() + " appears to be friendly");
+					System.out.println("What do you do?");
 				} else {
+					System.out.println(en.getDescription() + " charges you! DEFEND!");
 					FightableCharacter t = en.getNonPlayableCharacter();
-					//TODO:: make a function call for combat 
+					// TODO:: make a function call for combat
 					// combat initated
-					while (cb.fight(p, t)) {
-						
-						cb.fight(t, p);
+					while (cb.fight(t, p)) {
+
+						cb.fight(p, t);
 						System.out.println("Player: " + p.getHealth());
 						System.out.println("Enemy: " + t.getHealth());
 					}
@@ -92,7 +99,7 @@ public class GameLoop {
 				if (action.equals("attack")) {
 					if (npc instanceof FightableCharacter) {
 						FightableCharacter t = (FightableCharacter) npc;
-						//TODO:: make a function call for combat 
+						// TODO:: make a function call for combat
 						// combat initaited
 						while (cb.fight(p, t)) {
 							cb.fight(t, p);
@@ -111,6 +118,14 @@ public class GameLoop {
 
 			}
 
+		} else {
+			System.out.println("What do you do?");
+			String action = s.next();
+			if (action.equals("saved")) {
+				PlayerData sp = p.getPlayerData();
+				DataAccessObject.create(sp);
+				System.out.println("game saved");
+			}
 		}
 	}
 

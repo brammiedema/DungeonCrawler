@@ -7,47 +7,62 @@ import nl.youngcapital.atm.combatsystem.FightableCharacter;
 import nl.youngcapital.atm.effects.Effect;
 import nl.youngcapital.atm.elements.Element;
 import nl.youngcapital.atm.items.Item;
+import nl.youngcapital.atm.itemsimpl.WoodenStick;
 import nl.youngcapital.atm.magiceffects.MagicEffect;
 import nl.youngcapital.atm.world.World;
 
-public class Player implements FightableCharacter{
+public class Player implements FightableCharacter {
 
-	private ArrayList<Item> inventory = new ArrayList<>();
+	// private ArrayList<Item> inventory = new ArrayList<>();
+	//
+	private PlayerData playerData = new PlayerData();
 
-	private int x;
-	private int y;
-	private int z;
+	//
+	// private int x;
+	// private int y;
+	// private int z;
+	// private CharacterSheet cs;
+	//
+	// private ArrayList<Effect> effects;
+	// private ArrayList<MagicEffect> magicEffects;
+	// private ArrayList<Element> elements;
+	// private int healthPoints = 100;
+	//
+	// private static final int MAX_DAMAGE = 3;
+	// private static final int MIN_DAMAGE = 2;
+	// private static final int BASE_ARMOR = 2;
 	private CharacterSheet cs;
-	
-	private ArrayList<Effect> effects;	
-	private ArrayList<MagicEffect> magicEffects;
-	private ArrayList<Element> elements;
-	private int healthPoints = 100;
-	
-	private static final int MAX_DAMAGE = 3;
-	private static final int MIN_DAMAGE = 2;
-	private static final int BASE_ARMOR = 2;
 
 	private static final Random RAN = new Random();
 
 	public Player() {
-		Random ran = new Random();
-		this.x = Math.abs((ran.nextInt() % World.MAX_X_SIZE_WORLD));
-		this.y = Math.abs((ran.nextInt() % World.MAX_Y_SIZE_WORLD));
-		this.z = Math.abs((ran.nextInt() % World.MAX_Z_SIZE_WORLD));
-		cs = CharacterSheet.getInstance();
-		effects = new ArrayList<>();
-		magicEffects = new ArrayList<>();
-		elements = new ArrayList<>();
+		this.playerData.setX(Math.abs(RAN.nextInt() % World.MAX_X_SIZE_WORLD));
+		this.playerData.setY(Math.abs(RAN.nextInt() % World.MAX_Y_SIZE_WORLD));
+		this.playerData.setZ(Math.abs(RAN.nextInt() % World.MAX_Z_SIZE_WORLD));
+		this.playerData.setEffects(new ArrayList<>());
+		this.playerData.setMagicEffects(new ArrayList<>());
+		this.playerData.setElements(new ArrayList<>());
+		this.playerData.setInventory(new ArrayList<>());
+		this.cs = new CharacterSheet();
+		this.cs.setWeapon(new WoodenStick());
 	}
 
-	public Player(int x, int Y, int Z) {
-
+	public Player(int x, int y, int z, ArrayList<Effect> effects, ArrayList<MagicEffect> magicEffects,
+			ArrayList<Element> elements, int healthPoints, ArrayList<Item> inventory, CharacterSheet cs) {
+		this.playerData.setX(x);
+		this.playerData.setY(y);
+		this.playerData.setZ(z);
+		this.playerData.setHealthPoints(healthPoints);
+		this.playerData.setEffects(effects);
+		this.playerData.setInventory(inventory);
+		this.playerData.setElements(elements);
+		this.playerData.setMagicEffects(magicEffects);
+		this.cs = cs;
 	}
-	
-	public int getBaseDamage(){
+
+	public int getBaseDamage() {
 		Random ran = new Random();
-		return ran.nextInt(MAX_DAMAGE - MIN_DAMAGE) + MIN_DAMAGE;
+		return ran.nextInt(PlayerData.MAX_DAMAGE - PlayerData.MIN_DAMAGE) + PlayerData.MIN_DAMAGE;
 	}
 
 	public void useItem() {
@@ -60,96 +75,76 @@ public class Player implements FightableCharacter{
 	}
 
 	public void pickUpItem(Item item) {
-		inventory.add(item);
-	}
-
-	public int getX() {
-		return x;
-	}
-
-	public int getY() {
-		return y;
-	}
-
-	public int getZ() {
-		return z;
+		this.playerData.getInventory().add(item);
 	}
 
 	public void setX(int x) {
-		this.x = x;
+		this.playerData.setX(x);
+
 	}
 
 	public void setY(int y) {
-		this.y = y;
+		this.playerData.setY(y);
+
 	}
 
 	public void setZ(int z) {
-		this.z = z;
-	}
-	
-	public ArrayList<Item> getInventory() {
-		return inventory;
+		this.playerData.setZ(z);
 	}
 
+	public ArrayList<Item> getInventory() {
+		return this.playerData.getInventory();
+	}
 
 	public ArrayList<MagicEffect> getMagicEffects() {
-		return magicEffects;
-	}	
+		return this.playerData.getMagicEffects();
+	}
 
 	@Override
 	public int getDamage() {
-		int dmg = RAN.nextInt(1+(MAX_DAMAGE - MIN_DAMAGE)) + MIN_DAMAGE;
-		System.out.println("player dmg: "+dmg);
-		
+		int dmg = RAN.nextInt(1 + (PlayerData.MAX_DAMAGE - PlayerData.MIN_DAMAGE)) + PlayerData.MIN_DAMAGE;
+
 		return dmg;
 	}
 
 	@Override
 	public void dealDamage(int damage) {
-		this.healthPoints = healthPoints - damage;
+		this.playerData.setHealthPoints(this.playerData.getHealthPoints() - damage);
 	}
 
 	@Override
-	public ArrayList<Element> getElements() {		
-		return this.elements;
+	public ArrayList<Element> getElements() {
+		return this.playerData.getElements();
 	}
 
 	@Override
 	public ArrayList<Effect> getEffects() {
-		return this.effects;
+		return this.playerData.getEffects();
 	}
 
 	@Override
 	public int getHealth() {
-		return this.healthPoints;
+		return this.playerData.getHealthPoints();
 	}
 
 	@Override
 	public int getArmor() {
-		return cs.getTotalArmor() + BASE_ARMOR;
+		// return this.cs.getTotalArmor() + BASE_ARMOR;
+		return 0;
 	}
-	
+
 	@Override
 	public void setEffect(Effect effect) {
-		this.effects.add(effect);
+		this.playerData.getEffects().add(effect);
+
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("location (X, Y, Z): ");
-
-		sb.append(x);
-		sb.append(", ");
-		sb.append(y);
-		sb.append(", ");
-		sb.append(z);
-
-		for (Item it : inventory) {
-			sb.append(it + "\n");
-		}
-
-		return sb.toString();
+	public PlayerData getPlayerData() {
+		return playerData;
 	}
-	
+
+	public void setPlayerData(PlayerData playerData) {
+		this.playerData = playerData;
+	}
+
 }

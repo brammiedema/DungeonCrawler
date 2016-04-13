@@ -35,8 +35,6 @@ public class CombatSystem {
 	public boolean fight(FightableCharacter attacker, FightableCharacter defender) {
 
 		int dmg = (int) (attacker.getDamage() * getAttackModifier(attacker.getElements(), defender.getElements()));
-		System.out.println("dmg" + dmg);
-		System.out.println("recalc dmg: " + (dmg * (1 - (getDamageReductionPercentage(defender.getArmor()) / 100))));
 		defender.dealDamage((int) (dmg * (1 - (getDamageReductionPercentage(defender.getArmor()) / 100))));
 
 		resolveEffects(defender);

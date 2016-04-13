@@ -8,10 +8,10 @@ import nl.youngcapital.atm.items.Item;
 import nl.youngcapital.atm.items.MainHand;
 
 public class BroadSword extends Item implements Weapon, MainHand {
-	static final public String DESCRIPTION = "This sword comaplains!";
-	static final public String NAME = "Broadsword";
-	private static final int MAX_DAMAGE = 12;
-	private static final int MIN_DAMAGE = 7;
+	static final private String DESCRIPTION = "This sword comaplains!";
+	static final private String NAME = "Broadsword";
+	private static final int MAX_DAMAGE = 17;
+	private static final int MIN_DAMAGE = 10;
 	
 	private int minDmg;
 	private int maxDmg;

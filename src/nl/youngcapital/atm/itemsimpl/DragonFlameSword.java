@@ -6,12 +6,15 @@ import nl.youngcapital.atm.effects.Bleed;
 import nl.youngcapital.atm.effects.Effect;
 import nl.youngcapital.atm.items.Item;
 import nl.youngcapital.atm.items.MagicItem;
+import nl.youngcapital.atm.items.MainHand;
 import nl.youngcapital.atm.magiceffects.MagicEffect;
 
-public class DragonFlameSword extends Item implements MagicItem, Weapon {
+public class DragonFlameSword extends Item implements MagicItem, Weapon, MainHand {
 	
 	private static final String NAME = "Dragon flame sword";
 	private static final String DEFAULT_DESCRIPTION = "This sword is stolen from a dragon, let's hope it doesn't catch up.";
+	private static final int MAX_DAMAGE = 12;
+	private static final int MIN_DAMAGE = 7;
 	
 	private int minDmg;
 	private int maxDmg;
@@ -19,12 +22,14 @@ public class DragonFlameSword extends Item implements MagicItem, Weapon {
 	private MagicEffect magicEffect;
 	private boolean equiped = false;
 	private final int PRICE = 25;
+	private final static Random RAN = new Random();
 	
 	public DragonFlameSword(){
 		Random ran = new Random();
 		
-		this.minDmg = ran.nextInt(4) + 1;
-		this.maxDmg = ran.nextInt(3) + this.minDmg;
+		this.maxDmg = RAN.nextInt(MAX_DAMAGE - MIN_DAMAGE) + MIN_DAMAGE;
+		
+		this.minDmg = RAN.nextInt(MIN_DAMAGE) + MIN_DAMAGE;
 		this.effect = new Bleed();
 	}
 	

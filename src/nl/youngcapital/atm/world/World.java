@@ -28,8 +28,6 @@ public class World {
 		int westOffset = (x - 1 < 0) ? 0 : 1;
 		int eastOffset = (x + 1 > MAX_X_SIZE_WORLD) ? 0 : 1;
 
-		// if ((x >= 0 && x < MAX_X_SIZE_WORLD - 1) && (y >= 0 && y <
-		// MAX_Y_SIZE_WORLD - 1)) {
 
 		if (!(this.world[z][southOffset][x] instanceof LemonSquare)) {
 			directions.add("south");
@@ -46,13 +44,6 @@ public class World {
 		if (!(this.world[z][y][eastOffset] instanceof LemonSquare)) {
 			directions.add("east");
 		}
-		// } else {
-
-		// TODO:: add out die bounds handeling raise Z and recalculate y and
-		// x
-
-		// System.out.println("out die bounds");
-		// }
 
 		sb.append(replaceLastComma(directions));
 		sb.append("are open to explore");
@@ -66,7 +57,6 @@ public class World {
 			s = s + str + ", ";
 		}
 
-		System.out.println(s.lastIndexOf(","));
 		s = s.substring(0, s.lastIndexOf(",")) + s.substring(s.lastIndexOf(",") + 1, s.length());
 		s = s.substring(0, s.lastIndexOf(",")) + " and" + s.substring(s.lastIndexOf(",") + 1, s.length());
 
@@ -154,53 +144,53 @@ public class World {
 	}
 
 	public void moveCharacterNorth(Player p) {
-		if (p.getY() + 1 > MAX_Y_SIZE_WORLD - 1) {
+		if (p.getPlayerData().getY() + 1 > MAX_Y_SIZE_WORLD - 1) {
 			moveOnZ(p);
 			p.setY(0);
 		} else {
-			p.setY(p.getY() + 1);
+			p.setY(p.getPlayerData().getY() + 1);
 
 		}
 	}
 
 	public void moveCharacterSouth(Player p) {
-		if (p.getY() - 1 < 0) {
+		if (p.getPlayerData().getY() - 1 < 0) {
 			moveOnZ(p);
 			p.setY(MAX_Y_SIZE_WORLD);
 		} else {
-			p.setY(p.getY() - 1);
+			p.setY(p.getPlayerData().getY() - 1);
 		}
 
 	}
 
 	public void moveCharacterEast(Player p) {
-		if (p.getX() + 1 > MAX_X_SIZE_WORLD - 1) {
+		if (p.getPlayerData().getX() + 1 > MAX_X_SIZE_WORLD - 1) {
 			moveOnZ(p);
 			p.setX(0);
 		} else {
-			p.setX(p.getX() + 1);
+			p.setX(p.getPlayerData().getX() + 1);
 
 		}
 	}
 
 	public void moveCharacterWest(Player p) {
-		if (p.getX() - 1 < 0) {
+		if (p.getPlayerData().getX() - 1 < 0) {
 			moveOnZ(p);
 
 			p.setX(MAX_X_SIZE_WORLD);
 		} else {
-			p.setX(p.getX() - 1);
+			p.setX(p.getPlayerData().getX() - 1);
 		}
 
 	}
 
 	private void moveOnZ(Player p) {
-		if (p.getZ() > MAX_Z_SIZE_WORLD) {
+		if (p.getPlayerData().getZ() > MAX_Z_SIZE_WORLD) {
 			p.setZ(0);
-		} else if (p.getZ() < 0) {
+		} else if (p.getPlayerData().getZ() < 0) {
 			p.setZ(MAX_Z_SIZE_WORLD);
 		} else {
-			p.setZ(p.getZ() + 1);
+			p.setZ(p.getPlayerData().getZ() + 1);
 		}
 	}
 

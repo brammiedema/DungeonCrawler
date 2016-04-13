@@ -34,7 +34,7 @@ public class Burn extends Effect implements HealthEffect, DamageOverTime{
 	}
 
 	@Override
-	public int effectProcChance() {
+	public int getEffectProc() {
 		return effectProc;
 	}
 	
