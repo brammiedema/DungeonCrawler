@@ -1,19 +1,11 @@
 package nl.youngcapital.atm.effects;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-import org.hibernate.annotations.GenericGenerator;
-
 import nl.youngcapital.atm.elements.Element;
 
 public abstract class Effect {
 	private int duration; 
 	private String name;
 	private int effectProc;
-	private Long id;
-	
 	
 	public Effect(){
 		
@@ -48,16 +40,5 @@ public abstract class Effect {
 	public void setEffectProc(int effectProc){
 		this.effectProc = effectProc;
 	}
-	
-//	@Id
-//	@GeneratedValue(generator="increment")
-//	@GenericGenerator(name="increment", strategy = "increment")
-	public Long getId() {
-	    return id;
-	}
-	
-	public void setId(long id) {
-		this.id = id;
-	}
-	
+		
 }
