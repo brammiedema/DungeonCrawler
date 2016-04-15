@@ -122,8 +122,8 @@ public class GameLoop {
 			System.out.println("What do you do?");
 			String action = s.next();
 			if (action.equals("saved")) {
-				PlayerData sp = p.getPlayerData();
-				DataAccessObject.create(sp);
+				PlayerData pd = p.getPlayerData();
+				DataAccessObject.create(pd);
 				System.out.println("game saved");
 			}
 		}
