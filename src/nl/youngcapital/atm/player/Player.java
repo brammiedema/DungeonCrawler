@@ -1,21 +1,20 @@
 package nl.youngcapital.atm.player;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import nl.youngcapital.atm.combatsystem.FightableCharacter;
 import nl.youngcapital.atm.effects.Effect;
 import nl.youngcapital.atm.elements.Element;
 import nl.youngcapital.atm.items.Item;
-import nl.youngcapital.atm.itemsimpl.WoodenStick;
 import nl.youngcapital.atm.magiceffects.MagicEffect;
+import nl.youngcapital.atm.weapon.Weapon;
 import nl.youngcapital.atm.world.World;
 
 public class Player implements FightableCharacter {
 
 	private PlayerData playerData = new PlayerData();
-
-	private CharacterSheet cs;
 
 	private static final Random RAN = new Random();
 
@@ -23,25 +22,17 @@ public class Player implements FightableCharacter {
 		this.playerData.setX(Math.abs(RAN.nextInt() % World.MAX_X_SIZE_WORLD));
 		this.playerData.setY(Math.abs(RAN.nextInt() % World.MAX_Y_SIZE_WORLD));
 		this.playerData.setZ(Math.abs(RAN.nextInt() % World.MAX_Z_SIZE_WORLD));
-		this.playerData.setEffects(new ArrayList<>());
-		this.playerData.setMagicEffects(new ArrayList<>());
-		this.playerData.setElements(new ArrayList<>());
-		this.playerData.setInventory(new ArrayList<>());
-		this.cs = new CharacterSheet();
-		this.cs.setWeapon(new WoodenStick());
+//		this.playerData.setEffects(new ArrayList<>());
+//		this.playerData.setMagicEffects(new ArrayList<>());
+//		this.playerData.setElements(new ArrayList<>());
+//		this.playerData.setInventory(new ArrayList<>());
+		this.playerData.setCs(new CharacterSheet());
+		this.playerData.getCs().setWeapon(new Weapon("Wooden stick", "Blunt", 7, 4, 6, new ArrayList<>(), new ArrayList<>()));
 	}
-
-	public Player(int x, int y, int z, ArrayList<Effect> effects, ArrayList<MagicEffect> magicEffects,
-			ArrayList<Element> elements, int healthPoints, ArrayList<Item> inventory, CharacterSheet cs) {
-		this.playerData.setX(x);
-		this.playerData.setY(y);
-		this.playerData.setZ(z);
-		this.playerData.setHealthPoints(healthPoints);
-		this.playerData.setEffects(effects);
-		this.playerData.setInventory(inventory);
-		this.playerData.setElements(elements);
-		this.playerData.setMagicEffects(magicEffects);
-		this.cs = cs;
+	
+	public Player(PlayerData playerData, CharacterSheet cs){
+		this.playerData = playerData;
+		this.playerData.setCs(cs);
 	}
 
 	public int getBaseDamage() {
@@ -59,7 +50,7 @@ public class Player implements FightableCharacter {
 	}
 
 	public void pickUpItem(Item item) {
-		this.playerData.getInventory().add(item);
+//		this.playerData.getInventory().add(item);
 	}
 
 	public void setX(int x) {
@@ -76,13 +67,13 @@ public class Player implements FightableCharacter {
 		this.playerData.setZ(z);
 	}
 
-	public ArrayList<Item> getInventory() {
-		return this.playerData.getInventory();
-	}
+//	public ArrayList<Item> getInventory() {
+//		return this.playerData.getInventory();
+//	}
 
-	public ArrayList<MagicEffect> getMagicEffects() {
-		return this.playerData.getMagicEffects();
-	}
+//	public ArrayList<MagicEffect> getMagicEffects() {
+//		return this.playerData.getMagicEffects();
+//	}
 
 	@Override
 	public int getDamage() {
@@ -96,15 +87,15 @@ public class Player implements FightableCharacter {
 		this.playerData.setHealthPoints(this.playerData.getHealthPoints() - damage);
 	}
 
-	@Override
-	public ArrayList<Element> getElements() {
-		return this.playerData.getElements();
-	}
+//	@Override
+//	public ArrayList<Element> getElements() {
+//		return this.playerData.getElements();
+//	}
 
-	@Override
-	public ArrayList<Effect> getEffects() {
-		return this.playerData.getEffects();
-	}
+//	@Override
+//	public ArrayList<Effect> getEffects() {
+//		return this.playerData.getEffects();
+//	}
 
 	@Override
 	public int getHealth() {
@@ -113,13 +104,12 @@ public class Player implements FightableCharacter {
 
 	@Override
 	public int getArmor() {
-		// return this.cs.getTotalArmor() + BASE_ARMOR;
-		return 0;
+		return this.playerData.getCs().getHelm().getArmor();
 	}
 
 	@Override
 	public void setEffect(Effect effect) {
-		this.playerData.getEffects().add(effect);
+	//	this.playerData.getEffects().add(effect);
 
 	}
 
@@ -129,6 +119,18 @@ public class Player implements FightableCharacter {
 
 	public void setPlayerData(PlayerData playerData) {
 		this.playerData = playerData;
+	}
+
+	@Override
+	public ArrayList<Element> getElements() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Effect> getEffects() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
