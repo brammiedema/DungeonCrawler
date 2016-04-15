@@ -3,7 +3,15 @@ package nl.youngcapital.atm.effects;
 import nl.youngcapital.atm.elements.Element;
 
 public class Crushed extends Effect {
-	
+	private static final int DEFAULT_DURATION = 2;
+	private static final int DEFAULT_PROC = 2;
+	private static final String DEFAULT_NAME = "Crushed";
+
+	private int duration;
+
+	public Crushed(){
+		this.duration =  DEFAULT_PROC;
+	}
 
 	@Override
 	public Element getElement() {
@@ -12,32 +20,31 @@ public class Crushed extends Effect {
 
 	@Override
 	public int getDuration() {
-		// TODO Auto-generated method stub
-		return 0;
+		return duration;
 	}
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return DEFAULT_NAME;
 	}
 
 	@Override
 	public int getEffectProc() {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return DEFAULT_PROC;
 	}
 
 	@Override
 	public void substractDuration() {
-		// TODO Auto-generated method stub
-		
+		this.duration--;
+
 	}
 
 	@Override
 	public void addDuration() {
-		// TODO Auto-generated method stub
+		this.duration += DEFAULT_DURATION;
 		
+
 	}
 
 }
