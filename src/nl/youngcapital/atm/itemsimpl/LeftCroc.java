@@ -4,7 +4,7 @@ import java.util.Random;
 
 import nl.youngcapital.atm.items.Armor;
 import nl.youngcapital.atm.items.Item;
-
+@Deprecated
 public class LeftCroc extends Item implements Armor {
 
 	static final public String DESCRIPTION = "It's a left croc";

@@ -6,6 +6,7 @@ import nl.youngcapital.atm.effects.Effect;
 import nl.youngcapital.atm.items.Item;
 import nl.youngcapital.atm.items.TwoHanded;
 
+@Deprecated
 public class StoneMace extends Item implements Weapon, TwoHanded  {
 
 	static final private String DESCRIPTION = "It's a wooden stick!";

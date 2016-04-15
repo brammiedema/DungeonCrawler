@@ -7,6 +7,7 @@ import nl.youngcapital.atm.effects.Effect;
 import nl.youngcapital.atm.items.Item;
 import nl.youngcapital.atm.items.MainHand;
 
+@Deprecated
 public class BroadSword extends Item implements Weapon, MainHand {
 	static final private String DESCRIPTION = "This sword comaplains!";
 	static final private String NAME = "Broadsword";

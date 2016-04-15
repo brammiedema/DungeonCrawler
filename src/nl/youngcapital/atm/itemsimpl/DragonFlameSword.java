@@ -9,6 +9,7 @@ import nl.youngcapital.atm.items.MagicItem;
 import nl.youngcapital.atm.items.MainHand;
 import nl.youngcapital.atm.magiceffects.MagicEffect;
 
+@Deprecated
 public class DragonFlameSword extends Item implements MagicItem, Weapon, MainHand {
 	
 	private static final String NAME = "Dragon flame sword";
