@@ -7,6 +7,7 @@ import java.util.Random;
 public class WeaponGenerator {
 
 	private static final String[] ELEMENT_TYPES = { "fire", "water", "air", "earth" };
+	private static final String[] EFFECTS = {"crushed", "Bleed", "Burn"};
 	private static final String[] WEAPON_TYPES = { "sword", "mace" };
 
 	private static Random RAN = new Random();
@@ -45,8 +46,31 @@ public class WeaponGenerator {
 		return new Weapon(name, weaponType, maxDmg, minDmg, price, elements, effects);
 
 	}
+	
+	private String getEffectName(){
+		int efIndex = RAN.nextInt(10);
+
+		if (efIndex < 3) {
+			return EFFECTS[efIndex];
+
+		}
+
+		return null;
+	}
 
 	private List<String> getEffectNames() {
+		int d20 = RAN.nextInt(20);
+		List<String> effects = new ArrayList<String>();
+		if (d20 > 15) {
+			effects.add(getEffectName());
+		}
+		if (d20 > 12) {
+			effects.add(getEffectName());
+		}
+		if (d20 > 7) {
+			effects.add(getEffectName());
+		}
+
 		return null;
 	}
 
@@ -139,10 +163,10 @@ public class WeaponGenerator {
 
 		List<String> effects = new ArrayList<String>();
 
-		if (d20 > 16) {
+		if (d20 > 15) {
 			effects.add(getElementType());
 		}
-		if (d20 > 14) {
+		if (d20 > 12) {
 			effects.add(getElementType());
 		}
 		if (d20 > 7) {
