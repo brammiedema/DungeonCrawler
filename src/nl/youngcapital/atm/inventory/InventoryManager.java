@@ -1,5 +1,7 @@
 package nl.youngcapital.atm.inventory;
 
+import java.util.List;
+
 import nl.youngcapital.atm.armor.Armor;
 import nl.youngcapital.atm.consumables.Consumable;
 import nl.youngcapital.atm.weapon.Weapon;
@@ -33,6 +35,11 @@ public class InventoryManager {
 
 		return null;
 	}
+	
+	public List<Armor> getAllArmor(Inventory inventory) {
+	
+		return inventory.getArmors();
+	}
 
 	public Armor getArmor(Inventory inventory, String name) {
 		for (Armor arm : inventory.getArmors()) {
@@ -56,7 +63,8 @@ public class InventoryManager {
 		return null;
 	}
 
-	public void setWeapon(Inventory inventory, Weapon weapon) {
+	public void setWeapon(Inventory inventory, Weapon weapon){
+		System.out.println(weapon.getName());
 		inventory.getWeapons().add(weapon);
 	}
 

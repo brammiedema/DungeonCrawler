@@ -11,6 +11,7 @@ public class Main implements Runnable{
 	
 	@Override
 	public void run() {
+		System.out.println("Starting game");
 		GameLoop gl = new GameLoop();
 		gl.run();
 	}

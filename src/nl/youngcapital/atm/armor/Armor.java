@@ -3,12 +3,8 @@ package nl.youngcapital.atm.armor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
-
-import nl.youngcapital.atm.inventory.Inventory;
-import nl.youngcapital.atm.player.CharacterSheet;
 
 /**
  * Armor bean class
@@ -18,22 +14,29 @@ import nl.youngcapital.atm.player.CharacterSheet;
  */
 @Entity
 public class Armor {
-	private Inventory inventory;
-	
-	private CharacterSheet cs;
 	
 	private String name;
 	private int armor;
 	private String type;
 	private int price;
 	private long id;
+	private boolean equiped;
 	
+	public Armor(String name, int armor, String type, int price, boolean equiped) {
+		this.name = name;
+		this.armor = armor;
+		this.type = type;
+		this.price = price;
+		this.equiped = equiped;
+		
+	}
 	
 	public Armor(String name, int armor, String type, int price) {
 		this.name = name;
 		this.armor = armor;
 		this.type = type;
 		this.price = price;
+		this.equiped =  false;
 		
 	}
 	
@@ -80,20 +83,11 @@ public class Armor {
 		this.id = id;
 	}
 	
-	@OneToOne(mappedBy="weapon")
-	public CharacterSheet getCs() {
-		return cs;
+	public boolean isEquiped() {
+		return equiped;
 	}
 
-	public void setCs(CharacterSheet cs) {
-		this.cs = cs;
-	}
-
-	public Inventory getInventory() {
-		return inventory;
-	}
-
-	public void setInventory(Inventory inventory) {
-		this.inventory = inventory;
+	public void setEquiped(boolean equiped) {
+		this.equiped = equiped;
 	}
 }

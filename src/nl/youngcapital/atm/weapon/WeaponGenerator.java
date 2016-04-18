@@ -29,8 +29,8 @@ public class WeaponGenerator {
 	}
 
 	public Weapon generateRandomWeapon() {
-		List<String> elements;
-		List<String> effects;
+		List<String> elements = new ArrayList<>();
+		List<String> effects = new ArrayList<>();
 
 		elements = getElementTypes();
 		effects = getEffectNames();
@@ -41,7 +41,7 @@ public class WeaponGenerator {
 		int minDmg = getMinDmg(weaponType);
 		int price = getPrice(weaponType);
 
-		String name = getName(weaponType, effects, elements, maxDmg);
+		String name = getName(weaponType, elements, effects, maxDmg);
 
 		return new Weapon(name, weaponType, maxDmg, minDmg, price, elements, effects);
 
@@ -110,7 +110,15 @@ public class WeaponGenerator {
 
 		return minDmg;
 	}
-
+	/**
+	 * creates a name based on other properties of the weapon.
+	 * 
+	 * @param weaponType
+	 * @param elements
+	 * @param effects
+	 * @param maxDmg
+	 * @return
+	 */
 	private String getName(String weaponType, List<String> elements, List<String> effects, int maxDmg) {
 		StringBuilder name = new StringBuilder();
 

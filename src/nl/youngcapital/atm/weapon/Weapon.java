@@ -9,17 +9,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 
 import nl.youngcapital.atm.inventory.Inventory;
-import nl.youngcapital.atm.player.CharacterSheet;
 
 @Entity
 public class Weapon {
-
-	private Inventory inventory;
 
 	private String name;
 	private String type;
@@ -28,10 +25,34 @@ public class Weapon {
 	private int price;
 	private long id;
 
-	private CharacterSheet cs;
+	private boolean equiped;
 
 	private List<String> effects;
 	private List<String> elements;
+
+	/**
+	 * Generates an equiped weapon with the stats given
+	 * 
+	 * @param name
+	 * @param type
+	 * @param maxDmg
+	 * @param minDmg
+	 * @param price
+	 * @param elements
+	 * @param effects
+	 */
+	public Weapon(String name, String type, int maxDmg, int minDmg, int price, List<String> elements,
+			List<String> effects, boolean equiped) {
+		super();
+		this.name = name;
+		this.type = type;
+		this.maxDmg = maxDmg;
+		this.minDmg = minDmg;
+		this.price = price;
+		this.elements = elements;
+		this.effects = effects;
+		this.equiped = equiped;
+	}
 
 	/**
 	 * Generates a weapon with the stats given
@@ -54,6 +75,7 @@ public class Weapon {
 		this.price = price;
 		this.elements = elements;
 		this.effects = effects;
+		this.equiped =  false;
 	}
 
 	public String getName() {
@@ -107,22 +129,14 @@ public class Weapon {
 		this.id = id;
 	}
 
-	@OneToOne(mappedBy = "weapon")
-	public CharacterSheet getCs() {
-		return cs;
-	}
-
-	public void setCs(CharacterSheet cs) {
-		this.cs = cs;
-	}
-
 	@ElementCollection
 	@CollectionTable(name = "Effects", joinColumns = @JoinColumn(name = "id"))
 	@Column(name = "effects")
 	public List<String> getEffects() {
 		return effects;
 	}
-
+	
+	
 	public void setEffects(List<String> effects) {
 		this.effects = effects;
 	}
@@ -137,13 +151,14 @@ public class Weapon {
 	public void setElements(List<String> elements) {
 		this.elements = elements;
 	}
+	
 
-	public Inventory getInventory() {
-		return inventory;
+	public boolean isEquiped() {
+		return equiped;
 	}
 
-	public void setInventory(Inventory inventory) {
-		this.inventory = inventory;
+	public void setEquiped(boolean equiped) {
+		this.equiped = equiped;
 	}
 
 }

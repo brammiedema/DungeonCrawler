@@ -8,41 +8,28 @@ import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import nl.youngcapital.atm.armor.Armor;
-import nl.youngcapital.atm.weapon.Weapon;
+import nl.youngcapital.atm.inventory.Inventory;
 
 @Entity
 public class CharacterSheet {
+
 	private PlayerData playerData;
-	private Armor helm;
-	private Weapon weapon;
 	private long id;
+	private Inventory inventory;
 	
-	@OneToOne(mappedBy="cs") // mappedBy is property op PlayerData
+	public CharacterSheet() {
+		super();
+		inventory = new Inventory();
+		
+	}
+
+	@OneToOne(mappedBy = "cs") // mappedBy is property op PlayerData
 	public PlayerData getPlayerData() {
 		return playerData;
 	}
-	
+
 	public void setPlayerData(PlayerData playerData) {
 		this.playerData = playerData;
-	}
-	
-	@OneToOne(cascade = {CascadeType.ALL})
-	public Armor getHelm() {
-		return helm;
-	}
-	
-	public void setHelm(Armor helm) {
-		this.helm = helm;
-	}
-	
-	@OneToOne(cascade = {CascadeType.ALL})
-	public Weapon getWeapon() {
-		return weapon;
-	}
-
-	public void setWeapon(Weapon weapon) {
-		this.weapon = weapon;
 	}
 
 	@Id
@@ -55,5 +42,17 @@ public class CharacterSheet {
 	public void setId(long id) {
 		this.id = id;
 	}
+
+	
+	@OneToOne(cascade = {CascadeType.ALL})
+	public Inventory getInventory() {
+		return inventory;
+	}
+
+	public void setInventory(Inventory inventory) {
+		this.inventory = inventory;
+	}
+
+
 
 }

@@ -50,7 +50,7 @@ public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter 
 		armor = 4;
 		fillInventory();
 	}
-	
+
 	/**
 	 * fills inventory arraylist with random items
 	 */
@@ -60,27 +60,31 @@ public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter 
 		int value = 0;
 
 		while (this.value >= value) {
+
 			int itemTypePick = RAN.nextInt(5) % 3;
 
 			if (itemTypePick == 0) {
-				
+
 				switch (itemTypePick) {
 				case 0:
 					Weapon weapon = new WeaponGenerator().generateRandomWeapon();
 					im.setWeapon(inventory, weapon);
-					value =+ weapon.getPrice();
+
+					value += weapon.getPrice();
 					break;
 
 				case 1:
 					Armor armor = new ArmorGenerator().generateRandomArmor();
 					im.setArmor(inventory, armor);
-					value =+ armor.getPrice();
+
+					value += armor.getPrice();
 					break;
 
 				default:
 					Consumable consumable = new ConsumableGenerator().generateRandomConsumable();
 					im.setConsumable(inventory, consumable);
-					value =+ consumable.getPrice();
+
+					value += consumable.getPrice();
 					break;
 				}
 			}
@@ -88,10 +92,10 @@ public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter 
 		this.value = value;
 	}
 
-	public Inventory getInventory(){
+	public Inventory getInventory() {
 		return this.inventory;
 	}
-	
+
 	public int getValue() {
 		return this.value;
 	}
@@ -112,7 +116,6 @@ public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter 
 
 		return this.elements;
 	}
-
 
 	@Override
 	public int getDamage() {
@@ -138,7 +141,6 @@ public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter 
 	public int getHealth() {
 		return this.healthPoints;
 	}
-
 
 	@Override
 	public int getArmor() {
@@ -166,18 +168,18 @@ public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter 
 	@Override
 	public void sellWeapon(Inventory inventory) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void sellArmor(Inventory inventory) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void sellConsumable(Inventory inventory) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

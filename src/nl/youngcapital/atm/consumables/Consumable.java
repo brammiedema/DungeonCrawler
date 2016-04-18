@@ -12,8 +12,6 @@ import nl.youngcapital.atm.inventory.Inventory;
 @Entity
 public class Consumable {
 
-	private Inventory inventory;
-
 	private String name;
 	private String effect;
 	private String type;
@@ -26,14 +24,6 @@ public class Consumable {
 		this.effect = effect;
 		this.type = type;
 		this.price = price;
-	}
-
-	public Inventory getInventory() {
-		return inventory;
-	}
-
-	public void setInventory(Inventory inventory) {
-		this.inventory = inventory;
 	}
 	
 	public String getName() {

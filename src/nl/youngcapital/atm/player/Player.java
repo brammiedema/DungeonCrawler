@@ -9,6 +9,7 @@ import nl.youngcapital.atm.consumables.Consumable;
 import nl.youngcapital.atm.effects.Effect;
 import nl.youngcapital.atm.elements.Element;
 import nl.youngcapital.atm.inventory.Inventory;
+import nl.youngcapital.atm.inventory.InventoryManager;
 import nl.youngcapital.atm.weapon.Weapon;
 import nl.youngcapital.atm.world.World;
 
@@ -22,15 +23,13 @@ public class Player implements FightableCharacter {
 		this.playerData.setX(Math.abs(RAN.nextInt() % World.MAX_X_SIZE_WORLD));
 		this.playerData.setY(Math.abs(RAN.nextInt() % World.MAX_Y_SIZE_WORLD));
 		this.playerData.setZ(Math.abs(RAN.nextInt() % World.MAX_Z_SIZE_WORLD));
-//		this.playerData.setEffects(new ArrayList<>());
-//		this.playerData.setMagicEffects(new ArrayList<>());
-//		this.playerData.setElements(new ArrayList<>());
-//		this.playerData.setInventory(new ArrayList<>());
 		this.playerData.setCs(new CharacterSheet());
-		this.playerData.getCs().setWeapon(new Weapon("Wooden stick", "Blunt", 7, 4, 6, new ArrayList<>(), new ArrayList<>()));
+		InventoryManager.getInstance().setWeapon(this.playerData.getCs().getInventory(),
+				new Weapon("Wooden stick", "Blunt", 7, 4, 6, new ArrayList<>(), new ArrayList<>(), true));
+
 	}
-	
-	public Player(PlayerData playerData, CharacterSheet cs){
+
+	public Player(PlayerData playerData, CharacterSheet cs) {
 		this.playerData = playerData;
 		this.playerData.setCs(cs);
 	}
@@ -48,18 +47,18 @@ public class Player implements FightableCharacter {
 		// TODO implement
 		return null;
 	}
-	
+
 	public void pickUpWeapon(Weapon item) {
-//		this.playerData.getInventory().add(item);
-	}
-	
-	public void pickArmor(Armor armor) {
-//		this.playerData.getInventory().add(item);
+		// this.playerData.getInventory().add(item);
 	}
 
-	public void pickConsumable(Consumable consumable) {
-		
-//		this.playerData.getInventory().add(item);
+	public void pickUpArmor(Armor armor) {
+		// this.playerData.getInventory().add(item);
+	}
+
+	public void pickUpConsumable(Consumable consumable) {
+
+		// this.playerData.getInventory().add(item);
 	}
 
 	public void setX(int x) {
@@ -76,14 +75,6 @@ public class Player implements FightableCharacter {
 		this.playerData.setZ(z);
 	}
 
-//	public ArrayList<Item> getInventory() {
-//		return this.playerData.getInventory();
-//	}
-
-//	public ArrayList<MagicEffect> getMagicEffects() {
-//		return this.playerData.getMagicEffects();
-//	}
-
 	@Override
 	public int getDamage() {
 		int dmg = RAN.nextInt(1 + (PlayerData.MAX_DAMAGE - PlayerData.MIN_DAMAGE)) + PlayerData.MIN_DAMAGE;
@@ -96,29 +87,25 @@ public class Player implements FightableCharacter {
 		this.playerData.setHealthPoints(this.playerData.getHealthPoints() - damage);
 	}
 
-//	@Override
-//	public ArrayList<Element> getElements() {
-//		return this.playerData.getElements();
-//	}
-
-//	@Override
-//	public ArrayList<Effect> getEffects() {
-//		return this.playerData.getEffects();
-//	}
-
 	@Override
 	public int getHealth() {
 		return this.playerData.getHealthPoints();
 	}
 
+	public void setWeapon(Weapon weapon) {
+
+	}
+
 	@Override
 	public int getArmor() {
-		return this.playerData.getCs().getHelm().getArmor();
+
+		return InventoryManager.getInstance().getAllArmor(this.playerData.getCs().getInventory()).stream()
+				.filter(a -> a.isEquiped()).mapToInt(Armor::getArmor).sum();
 	}
 
 	@Override
 	public void setEffect(Effect effect) {
-	//	this.playerData.getEffects().add(effect);
+		// this.playerData.getEffects().add(effect);
 
 	}
 

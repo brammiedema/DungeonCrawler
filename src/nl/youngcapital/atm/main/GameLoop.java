@@ -21,8 +21,11 @@ public class GameLoop {
 	private final CombatSystem cb = CombatSystem.getInstance();
 
 	public void run() {
+		
 		gw = new World();
+		System.out.println("Created world");
 		Player p = new Player();
+		System.out.println("Created Player");
 		s = new Scanner(System.in);
 		System.out.println("You wake up and remember nothing!");
 		System.out.println("You find yourself in a strange landscape.");
