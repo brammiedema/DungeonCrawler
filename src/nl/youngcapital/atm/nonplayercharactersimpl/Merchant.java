@@ -11,7 +11,7 @@ import nl.youngcapital.atm.consumables.ConsumableGenerator;
 import nl.youngcapital.atm.effects.Effect;
 import nl.youngcapital.atm.elements.Element;
 import nl.youngcapital.atm.inventory.Inventory;
-import nl.youngcapital.atm.magiceffects.MagicEffect;
+import nl.youngcapital.atm.inventory.InventoryManager;
 import nl.youngcapital.atm.nonplayercharacters.NonPlayableCharacter;
 import nl.youngcapital.atm.nonplayercharacters.Shop;
 import nl.youngcapital.atm.weapon.Weapon;
@@ -24,7 +24,6 @@ public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter 
 	private String description;
 	private ArrayList<Element> elements;
 	private ArrayList<Effect> effects;
-	private ArrayList<MagicEffect> magicEffects;
 	private int armor;
 
 	private static final int MAXVALUE = 50;
@@ -47,7 +46,6 @@ public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter 
 		healthPoints = RAN.nextInt(MAX_HEALTH_POINTS - MIN_HEALTH_POINTS) + MIN_HEALTH_POINTS;
 		inventory = new Inventory();
 		effects = new ArrayList<>();
-		magicEffects = new ArrayList<>();
 		elements = new ArrayList<>();
 		armor = 4;
 		fillInventory();
@@ -58,7 +56,7 @@ public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter 
 	 */
 	private void fillInventory() {
 		this.value = RAN.nextInt(MAXVALUE - MINVALUE) + MINVALUE;
-
+		InventoryManager im = InventoryManager.getInstance();
 		int value = 0;
 
 		while (this.value >= value) {
@@ -69,19 +67,19 @@ public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter 
 				switch (itemTypePick) {
 				case 0:
 					Weapon weapon = new WeaponGenerator().generateRandomWeapon();
-					
+					im.setWeapon(inventory, weapon);
 					value =+ weapon.getPrice();
 					break;
 
 				case 1:
 					Armor armor = new ArmorGenerator().generateRandomArmor();
-					
+					im.setArmor(inventory, armor);
 					value =+ armor.getPrice();
 					break;
 
 				default:
 					Consumable consumable = new ConsumableGenerator().generateRandomConsumable();
-					
+					im.setConsumable(inventory, consumable);
 					value =+ consumable.getPrice();
 					break;
 				}
@@ -115,11 +113,6 @@ public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter 
 		return this.elements;
 	}
 
-	@Override
-	public ArrayList<MagicEffect> getMagicEffect() {
-
-		return this.magicEffects;
-	}
 
 	@Override
 	public int getDamage() {

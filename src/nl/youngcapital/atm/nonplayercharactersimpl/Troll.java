@@ -6,14 +6,12 @@ import java.util.Random;
 import nl.youngcapital.atm.combatsystem.FightableCharacter;
 import nl.youngcapital.atm.effects.Effect;
 import nl.youngcapital.atm.elements.Element;
-import nl.youngcapital.atm.magiceffects.MagicEffect;
 import nl.youngcapital.atm.nonplayercharacters.NonPlayableCharacter;
 
 public class Troll implements NonPlayableCharacter, FightableCharacter {
 	private int healthPoints;
 	private ArrayList<Element> elements;
 	private ArrayList<Effect> effects;
-	private ArrayList<MagicEffect> magicEffects;
 	private String description;
 	private int armor;
 	
@@ -28,7 +26,6 @@ public class Troll implements NonPlayableCharacter, FightableCharacter {
 		this.description = DEFAULT_DESCRIPTION;
 		healthPoints = RAN.nextInt(MAX_HEALTH_POINTS - MIN_HEALTH_POINTS) + MIN_HEALTH_POINTS;
 		effects = new ArrayList<>();
-		magicEffects = new ArrayList<>();
 		elements = new ArrayList<>();
 		armor = 14;
 	}
@@ -64,17 +61,6 @@ public class Troll implements NonPlayableCharacter, FightableCharacter {
 	}
 
 	@Override
-	public ArrayList<MagicEffect> getMagicEffect() {
-		
-		return magicEffects;
-	}
-
-	@Override
-	public boolean isFriendly() {
-		return false;
-	}
-
-	@Override
 	public int getHealth() {
 		return this.healthPoints;
 	}
@@ -92,6 +78,12 @@ public class Troll implements NonPlayableCharacter, FightableCharacter {
 	@Override
 	public int getArmor() {
 		return armor;
+	}
+
+	@Override
+	public boolean isFriendly() {
+
+		return false;
 	}
 
 }

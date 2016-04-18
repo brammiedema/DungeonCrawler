@@ -2,7 +2,6 @@ package nl.youngcapital.atm.effects;
 
 import nl.youngcapital.atm.elements.Element;
 import nl.youngcapital.atm.elements.Fire;
-import nl.youngcapital.atm.magiceffects.DamageOverTime;
 
 public class Burn extends Effect implements HealthEffect, DamageOverTime{
 	private int duration;
