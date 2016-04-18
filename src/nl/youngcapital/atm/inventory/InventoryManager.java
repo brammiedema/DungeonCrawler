@@ -6,14 +6,14 @@ import nl.youngcapital.atm.weapon.Weapon;
 
 public class InventoryManager {
 
-	private InventoryManager im;
+	private static InventoryManager im;
 	
 	private InventoryManager(){
 		super();
 		
 	}
 	
-	public InventoryManager getInstance(){
+	public static InventoryManager getInstance(){
 		
 		if (im ==  null){
 			im = new InventoryManager();
@@ -64,7 +64,7 @@ public class InventoryManager {
 		inventory.getArmors().add(armor);
 	}
 
-	static public void setConsumable(Inventory inventory, Consumable consumable) {
+	public void setConsumable(Inventory inventory, Consumable consumable) {
 		inventory.getConsumables().add(consumable);
 	}
 }
