@@ -7,6 +7,7 @@ import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import nl.youngcapital.atm.inventory.Inventory;
 import nl.youngcapital.atm.player.CharacterSheet;
 
 /**
@@ -17,6 +18,8 @@ import nl.youngcapital.atm.player.CharacterSheet;
  */
 @Entity
 public class Armor {
+	private Inventory inventory;
+	
 	private CharacterSheet cs;
 	
 	private String name;
@@ -84,5 +87,13 @@ public class Armor {
 
 	public void setCs(CharacterSheet cs) {
 		this.cs = cs;
+	}
+
+	public Inventory getInventory() {
+		return inventory;
+	}
+
+	public void setInventory(Inventory inventory) {
+		this.inventory = inventory;
 	}
 }

@@ -13,10 +13,13 @@ import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import nl.youngcapital.atm.inventory.Inventory;
 import nl.youngcapital.atm.player.CharacterSheet;
 
 @Entity
 public class Weapon {
+
+	private Inventory inventory;
 
 	private String name;
 	private String type;
@@ -133,6 +136,14 @@ public class Weapon {
 
 	public void setElements(List<String> elements) {
 		this.elements = elements;
+	}
+
+	public Inventory getInventory() {
+		return inventory;
+	}
+
+	public void setInventory(Inventory inventory) {
+		this.inventory = inventory;
 	}
 
 }

@@ -46,7 +46,7 @@ public class ArmorGenerator {
 			sb.append(" chainmail");
 			
 		} else if(type.equals("plate")){
-			sb.append(" latemail");
+			sb.append(" platemail");
 			
 		} else if(type.equals("mithrel")){
 			sb.append("mithrel armor");

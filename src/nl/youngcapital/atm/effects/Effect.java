@@ -3,18 +3,20 @@ package nl.youngcapital.atm.effects;
 import nl.youngcapital.atm.elements.Element;
 
 public abstract class Effect {
+	
 	private int duration; 
 	private String name;
 	private int effectProc;
 	
 	public Effect(){
-		
+		super();
 	}
 	
 	public Effect(int duration, String name, int effectProcChance){
-		this.duration= duration;
+		this.duration = duration;
 		this.name = name;
 		this.effectProc = effectProcChance;
+		
 	}
 	
 	public abstract Element getElement();

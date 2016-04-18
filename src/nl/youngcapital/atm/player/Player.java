@@ -1,14 +1,14 @@
 package nl.youngcapital.atm.player;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
+import nl.youngcapital.atm.armor.Armor;
 import nl.youngcapital.atm.combatsystem.FightableCharacter;
+import nl.youngcapital.atm.consumables.Consumable;
 import nl.youngcapital.atm.effects.Effect;
 import nl.youngcapital.atm.elements.Element;
-import nl.youngcapital.atm.items.Item;
-import nl.youngcapital.atm.magiceffects.MagicEffect;
+import nl.youngcapital.atm.inventory.Inventory;
 import nl.youngcapital.atm.weapon.Weapon;
 import nl.youngcapital.atm.world.World;
 
@@ -44,12 +44,21 @@ public class Player implements FightableCharacter {
 		// TODO implement
 	}
 
-	public String showInventory() {
+	public Inventory showInventory() {
 		// TODO implement
 		return null;
 	}
+	
+	public void pickUpWeapon(Weapon item) {
+//		this.playerData.getInventory().add(item);
+	}
+	
+	public void pickArmor(Armor armor) {
+//		this.playerData.getInventory().add(item);
+	}
 
-	public void pickUpItem(Item item) {
+	public void pickConsumable(Consumable consumable) {
+		
 //		this.playerData.getInventory().add(item);
 	}
 

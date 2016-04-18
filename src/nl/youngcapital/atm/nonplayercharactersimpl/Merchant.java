@@ -3,20 +3,23 @@ package nl.youngcapital.atm.nonplayercharactersimpl;
 import java.util.ArrayList;
 import java.util.Random;
 
+import nl.youngcapital.atm.armor.Armor;
+import nl.youngcapital.atm.armor.ArmorGenerator;
 import nl.youngcapital.atm.combatsystem.FightableCharacter;
+import nl.youngcapital.atm.consumables.Consumable;
+import nl.youngcapital.atm.consumables.ConsumableGenerator;
 import nl.youngcapital.atm.effects.Effect;
 import nl.youngcapital.atm.elements.Element;
-import nl.youngcapital.atm.items.Item;
-import nl.youngcapital.atm.itemsimpl.BroadSword;
-import nl.youngcapital.atm.itemsimpl.DragonFlameSword;
-import nl.youngcapital.atm.itemsimpl.Hamburger;
+import nl.youngcapital.atm.inventory.Inventory;
 import nl.youngcapital.atm.magiceffects.MagicEffect;
 import nl.youngcapital.atm.nonplayercharacters.NonPlayableCharacter;
 import nl.youngcapital.atm.nonplayercharacters.Shop;
+import nl.youngcapital.atm.weapon.Weapon;
+import nl.youngcapital.atm.weapon.WeaponGenerator;
 
-public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter{
-	private ArrayList<Item> inventory;
-	private int value; 
+public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter {
+	private Inventory inventory;
+	private int value;
 	private int healthPoints;
 	private String description;
 	private ArrayList<Element> elements;
@@ -25,25 +28,24 @@ public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter{
 	private int armor;
 
 	private static final int MAXVALUE = 50;
-	private static final int MINVALUE = 30; 
-	private final static String DEFAULT_DESCRIPTION="a merchant selling valuebles."; 
+	private static final int MINVALUE = 30;
+	private final static String DEFAULT_DESCRIPTION = "a merchant selling valuebles.";
 	private static final int MAX_HEALTH_POINTS = 20;
 	private static final int MIN_HEALTH_POINTS = 16;
 	private static final int MAX_DAMAGE = 10;
 	private static final int MIN_DAMAGE = 5;
 	private static final Random RAN = new Random();
 
-	public Merchant(String description){
+	public Merchant(String description) {
 		this();
 		this.description = description;
 
-		
 	}
-	
-	public Merchant(){
+
+	public Merchant() {
 		this.description = DEFAULT_DESCRIPTION;
 		healthPoints = RAN.nextInt(MAX_HEALTH_POINTS - MIN_HEALTH_POINTS) + MIN_HEALTH_POINTS;
-		inventory = new ArrayList<>();
+		inventory = new Inventory();
 		effects = new ArrayList<>();
 		magicEffects = new ArrayList<>();
 		elements = new ArrayList<>();
@@ -55,44 +57,47 @@ public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter{
 	 * fills inventory arraylist with random items
 	 */
 	private void fillInventory() {
-		Random ran = new Random();
-		
-		this.value = ran.nextInt(MAXVALUE-MINVALUE) + MINVALUE;
-		
+		this.value = RAN.nextInt(MAXVALUE - MINVALUE) + MINVALUE;
+
 		int value = 0;
-		
-		while (this.value >= value){
-			Item item;
-			int randomInt = ran.nextInt(5) % 3;
 
-			switch (randomInt) {
-			case 0:
-				item = new DragonFlameSword();
+		while (this.value >= value) {
+			int itemTypePick = RAN.nextInt(5) % 3;
+
+			if (itemTypePick == 0) {
 				
-				break;
-				
-			case 1:
-				item = new BroadSword();
-				break;
-				
-			default:
-				item = new Hamburger();
+				switch (itemTypePick) {
+				case 0:
+					Weapon weapon = new WeaponGenerator().generateRandomWeapon();
+					
+					value =+ weapon.getPrice();
+					break;
+
+				case 1:
+					Armor armor = new ArmorGenerator().generateRandomArmor();
+					
+					value =+ armor.getPrice();
+					break;
+
+				default:
+					Consumable consumable = new ConsumableGenerator().generateRandomConsumable();
+					
+					value =+ consumable.getPrice();
+					break;
+				}
 			}
-
-			inventory.add(item);
-			value = value + item.getPrice();
 		}
 		this.value = value;
 	}
-	
-	public int getValue(){
-		return this.value;
-	}
-	
-	public ArrayList<Item> getInventory(){
+
+	public Inventory getInventory(){
 		return this.inventory;
 	}
 	
+	public int getValue() {
+		return this.value;
+	}
+
 	@Override
 	public void dealDamage(int damage) {
 
@@ -106,13 +111,13 @@ public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter{
 
 	@Override
 	public ArrayList<Element> getElements() {
-		
+
 		return this.elements;
 	}
 
 	@Override
 	public ArrayList<MagicEffect> getMagicEffect() {
-		
+
 		return this.magicEffects;
 	}
 
@@ -120,7 +125,7 @@ public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter{
 	public int getDamage() {
 		return RAN.nextInt(MAX_DAMAGE - MIN_DAMAGE) + MIN_DAMAGE;
 	}
-	
+
 	@Override
 	public boolean isFriendly() {
 		return true;
@@ -130,7 +135,6 @@ public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter{
 	public void setEffect(Effect effect) {
 		this.effects.add(effect);
 	}
-
 
 	@Override
 	public ArrayList<Effect> getEffects() {
@@ -142,26 +146,45 @@ public class Merchant implements NonPlayableCharacter, Shop, FightableCharacter{
 		return this.healthPoints;
 	}
 
-	@Override
-	public Item buyItem(String itemName) {
-		for(Item item : inventory){
-			if(item.getName().toLowerCase().equals(itemName.toLowerCase())){
-				return item;
-			}
-		}
-		return null;
-	}
-
-	@Override
-	public int SellItem(Item item) {
-		int price = (int) (item.getPrice() * 0.75);
-		item = null;
-		
-		return price;
-	}
 
 	@Override
 	public int getArmor() {
 		return armor;
+	}
+
+	@Override
+	public Weapon buyWeapon(String weaponName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Armor buyArmor(String armorName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Armor buyConsumable(String consumableName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void sellWeapon(Inventory inventory) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void sellArmor(Inventory inventory) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void sellConsumable(Inventory inventory) {
+		// TODO Auto-generated method stub
+		
 	}
 }

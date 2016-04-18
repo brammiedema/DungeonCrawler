@@ -1,15 +1,21 @@
 package nl.youngcapital.atm.nonplayercharacters;
 
-import java.util.ArrayList;
-
-import nl.youngcapital.atm.items.Item;
+import nl.youngcapital.atm.armor.Armor;
+import nl.youngcapital.atm.inventory.Inventory;
+import nl.youngcapital.atm.weapon.Weapon;
 
 public interface Shop {
+		
+	public Weapon buyWeapon(String weaponName);
 	
-	public ArrayList<Item> getInventory();
+	public Armor buyArmor(String armorName);
 	
-	public Item buyItem(String itemName);
+	public Armor buyConsumable(String consumableName);
 	
-	public int SellItem(Item item);
+	public void sellWeapon(Inventory inventory);
+	
+	public void sellArmor(Inventory inventory);
+	
+	public void sellConsumable(Inventory inventory);
 		
 }

@@ -7,7 +7,7 @@ import java.util.Random;
 public class WeaponGenerator {
 
 	private static final String[] ELEMENT_TYPES = { "fire", "water", "air", "earth" };
-	private static final String[] EFFECTS = {"crushed", "Bleed", "Burn"};
+	private static final String[] EFFECTS = { "crushed", "Bleed", "Burn" };
 	private static final String[] WEAPON_TYPES = { "sword", "mace" };
 
 	private static Random RAN = new Random();
@@ -46,8 +46,8 @@ public class WeaponGenerator {
 		return new Weapon(name, weaponType, maxDmg, minDmg, price, elements, effects);
 
 	}
-	
-	private String getEffectName(){
+
+	private String getEffectName() {
 		int efIndex = RAN.nextInt(10);
 
 		if (efIndex < 3) {
@@ -114,26 +114,24 @@ public class WeaponGenerator {
 	private String getName(String weaponType, List<String> elements, List<String> effects, int maxDmg) {
 		StringBuilder name = new StringBuilder();
 
-		
-		
 		if (weaponType.equals("sword")) {
-			
-			if(maxDmg > 13){
+
+			if (maxDmg > 13) {
 				name.append(" sharp ");
 			}
-			
-			if(elements.size() > 2){
+
+			if (elements.size() > 2) {
 				name.append(" elemental ");
 			}
-			
+
 			name.append(" sword");
-			
+
 		} else if (weaponType.equals(" mace")) {
-			if(maxDmg > 15){
+			if (maxDmg > 15) {
 				name.append(" mighty ");
-				
+
 			}
-			if(elements.size() > 2){
+			if (elements.size() > 2) {
 				name.append(" doom ");
 			}
 			name.append(" mace");
