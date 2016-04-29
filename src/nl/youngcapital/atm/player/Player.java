@@ -24,8 +24,10 @@ public class Player implements FightableCharacter {
 		this.playerData.setY(Math.abs(RAN.nextInt() % World.MAX_Y_SIZE_WORLD));
 		this.playerData.setZ(Math.abs(RAN.nextInt() % World.MAX_Z_SIZE_WORLD));
 		this.playerData.setCs(new CharacterSheet());
+		ArrayList<String> elements = new ArrayList<String>();
+		elements.add("fire");
 		InventoryManager.getInstance().setWeapon(this.playerData.getCs().getInventory(),
-				new Weapon("Wooden stick", "Blunt", 7, 4, 6, new ArrayList<>(), new ArrayList<>(), true));
+				new Weapon("Wooden stick", "Blunt", 7, 4, 6, elements, new ArrayList<>(), true));
 
 	}
 

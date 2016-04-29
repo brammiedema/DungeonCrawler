@@ -130,7 +130,7 @@ public class Weapon {
 	}
 
 	@ElementCollection
-	@CollectionTable(name = "Effects", joinColumns = @JoinColumn(name = "id"))
+	@CollectionTable(name = "Effects", joinColumns = @JoinColumn(name = "weapon_id"))
 	@Column(name = "effects")
 	public List<String> getEffects() {
 		return effects;
@@ -142,7 +142,7 @@ public class Weapon {
 	}
 
 	@ElementCollection
-	@CollectionTable(name = "Elements", joinColumns = @JoinColumn(name = "id"))
+	@CollectionTable(name = "Elements", joinColumns = @JoinColumn(name = "weapon_id"))
 	@Column(name = "elements")
 	public List<String> getElements() {
 		return elements;
